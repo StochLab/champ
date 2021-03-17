@@ -1,0 +1,34 @@
+"":
+  joint_states_controller:
+      type: joint_state_controller/JointStateController
+      publish_rate: 50
+
+  joint_group_position_controller:
+      type: effort_controllers/JointTrajectoryController
+      joints:
+          - fl_abd_joint
+          - fl_hip_joint
+          - fl_knee_joint
+          - fr_abd_joint
+          - fr_hip_joint
+          - fr_knee_joint
+          - bl_abd_joint
+          - bl_hip_joint
+          - bl_knee_joint
+          - br_abd_joint
+          - br_hip_joint
+          - br_knee_joint
+
+      gains:
+        fl_abd_joint : {p: 18, d: 0.1, i: 10}
+        fl_hip_joint : {p: 18, d: 0.1, i: 10}
+        fl_knee_joint : {p: 18, d: 0.1, i: 10}
+        fr_abd_joint : {p: 18, d: 0.1, i: 10}
+        fr_hip_joint : {p: 18, d: 0.1, i: 10}
+        fr_knee_joint : {p: 18, d: 0.1, i: 10}
+        bl_abd_joint : {p: 18, d: 0.1, i: 10}
+        bl_hip_joint : {p: 18, d: 0.1, i: 10}
+        bl_knee_joint : {p: 18, d: 0.1, i: 10}
+        br_abd_joint : {p: 18, d: 0.1, i: 10}
+        br_hip_joint : {p: 18, d: 0.1, i: 10}
+        br_knee_joint : {p: 18, d: 0.1, i: 10}

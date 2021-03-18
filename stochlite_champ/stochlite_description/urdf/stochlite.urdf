@@ -101,7 +101,7 @@
     <parent link="fl_abd_link"/>
     <child link="fl_thigh_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="fl_shank_link">
     <inertial>
@@ -130,12 +130,12 @@
     <parent link="fl_thigh_link"/>
     <child link="fl_shank_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="fl_toe_link">
         </link>
   <joint name="fl_toe_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0.023481 -0.146"/>
+    <origin rpy="0 0 0" xyz="0 -0.023481 -0.146"/>
     <axis xyz="0 1 0"/>
     <parent link="fl_shank_link"/>
     <child link="fl_toe_link"/>
@@ -196,7 +196,7 @@
     <parent link="fr_abd_link"/>
     <child link="fr_thigh_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="fr_shank_link">
     <inertial>
@@ -225,7 +225,7 @@
     <parent link="fr_thigh_link"/>
     <child link="fr_shank_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="fr_toe_link">
         </link>
@@ -291,7 +291,7 @@
     <parent link="bl_abd_link"/>
     <child link="bl_thigh_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="bl_shank_link">
     <inertial>
@@ -320,12 +320,12 @@
     <parent link="bl_thigh_link"/>
     <child link="bl_shank_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="bl_toe_link">
         </link>
   <joint name="bl_toe_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0.023481 -0.146"/>
+    <origin rpy="0 0 0" xyz="0 -0.023481 -0.146"/>
     <axis xyz="0 1 0"/>
     <parent link="bl_shank_link"/>
     <child link="bl_toe_link"/>
@@ -386,7 +386,7 @@
     <parent link="br_abd_link"/>
     <child link="br_thigh_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="br_shank_link">
     <inertial>
@@ -415,7 +415,7 @@
     <parent link="br_thigh_link"/>
     <child link="br_shank_link"/>
     <axis xyz="0 1 0"/>
-    <limit effort="4.1" lower="-10.22" upper="10.22" velocity="4.6"/>
+    <limit effort="4.1" lower="-5.22" upper="5.22" velocity="4.6"/>
   </joint>
   <link name="br_toe_link">
         </link>
@@ -539,9 +539,9 @@
       <legacyModeNS>true</legacyModeNS>
     </plugin>
   </gazebo>
-  <gazebo>
-    <self_collide>1</self_collide>
-  </gazebo>
+  <!-- <gazebo>
+            <self_collide>1</self_collide>
+        </gazebo> -->
   <gazebo>
     <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">
       <alwaysOn>true</alwaysOn>

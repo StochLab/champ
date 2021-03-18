@@ -10,9 +10,9 @@
             </plugin>
         </gazebo>
 
-        <gazebo>
+        <!-- <gazebo>
             <self_collide>1</self_collide>
-        </gazebo>
+        </gazebo> -->
 
         <gazebo>
             <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">

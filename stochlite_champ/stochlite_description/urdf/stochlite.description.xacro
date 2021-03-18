@@ -5,8 +5,8 @@
     <xacro:property name="torque" value="4.1" />
     <xacro:property name="velocity" value="4.6" />
     <xacro:property name="abd_lim" value="1.572" />
-    <xacro:property name="hip_lim" value="5.22" />
-    <xacro:property name="knee_lim" value="5.22" />
+    <xacro:property name="hip_lim" value="10.22" />
+    <xacro:property name="knee_lim" value="10.22" />
 
     <xacro:macro name="stochlite_description">
 
@@ -198,7 +198,7 @@
         </link>
         
         <joint name="fl_toe_joint" type="fixed">
-            <origin xyz="0 -0.023481 -0.146" rpy="0 0 0" />
+            <origin xyz="0 0.023481 -0.146" rpy="0 0 0" />
             <axis xyz="0 1 0" />
             <parent link="fl_shank_link"/>
             <child link="fl_toe_link"/>
@@ -530,7 +530,7 @@
         </link>
         
         <joint name="bl_toe_joint" type="fixed">
-            <origin xyz="0 -0.023481 -0.146" rpy="0 0 0" />
+            <origin xyz="0 0.023481 -0.146" rpy="0 0 0" />
             <axis xyz="0 1 0" />
             <parent link="bl_shank_link"/>
             <child link="bl_toe_link"/>

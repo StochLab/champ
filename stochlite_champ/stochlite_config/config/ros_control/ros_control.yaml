@@ -20,15 +20,15 @@
           - br_knee_joint
 
       gains:
-        fl_abd_joint : {p: 180, d: 0.9, i: 20}
-        fl_hip_joint : {p: 180, d: 0.9, i: 20}
-        fl_knee_joint : {p: 180, d: 0.9, i: 20}
-        fr_abd_joint : {p: 180, d: 0.9, i: 20}
-        fr_hip_joint : {p: 180, d: 0.9, i: 20}
-        fr_knee_joint : {p: 180, d: 0.9, i: 20}
-        bl_abd_joint : {p: 180, d: 0.9, i: 20}
-        bl_hip_joint : {p: 180, d: 0.9, i: 20}
-        bl_knee_joint : {p: 180, d: 0.9, i: 20}
-        br_abd_joint : {p: 180, d: 0.9, i: 20}
-        br_hip_joint : {p: 180, d: 0.9, i: 20}
-        br_knee_joint : {p: 180, d: 0.9, i: 20}
+        fl_abd_joint : {p: 10, d: 0.9, i: 0.2}
+        fl_hip_joint : {p: 10, d: 0.9, i: 0.2}
+        fl_knee_joint : {p: 10, d: 0.9, i: 0.2}
+        fr_abd_joint : {p: 10, d: 0.9, i: 0.2}
+        fr_hip_joint : {p: 10, d: 0.9, i: 0.2}
+        fr_knee_joint : {p: 10, d: 0.9, i: 0.2}
+        bl_abd_joint : {p: 10, d: 0.9, i: 0.2}
+        bl_hip_joint : {p: 10, d: 0.9, i: 0.2}
+        bl_knee_joint : {p: 10, d: 0.9, i: 0.2}
+        br_abd_joint : {p: 10, d: 0.9, i: 0.2}
+        br_hip_joint : {p: 10, d: 0.9, i: 0.2}
+        br_knee_joint : {p: 10, d: 0.9, i: 0.2}

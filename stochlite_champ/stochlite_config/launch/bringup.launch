@@ -1,6 +1,6 @@
 <launch>
     <arg name="robot_name"              default="/"/>  <!-- Change this for namespacing. -->
-    <arg name="base_frame"             default="base_link_torso"/> <!-- Link name of floating base. Do not touch this. -->
+    <arg name="base_frame"             default="base_link"/> <!-- Link name of floating base. Do not touch this. -->
     <arg name="joints_map_file"        default="$(find stochlite_config)/config/joints/joints.yaml"/> <!--Path to list of joint names. Do not touch this. -->
     <arg name="links_map_file"         default="$(find stochlite_config)/config/links/links.yaml"/> <!-- Path to list of link names. Do not touch this. -->
     <arg name="gait_config_file"       default="$(find stochlite_config)/config/gait/gait.yaml"/>  <!-- Path to gait parameters. Do not touch this. -->
@@ -41,8 +41,8 @@
     <arg unless="$(eval arg('robot_name') == '/')" name="frame_prefix" value="$(arg robot_name)/" />
     
     <group if="$(arg hardware_connected)">
-        <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser" args="0 0 0 0 0 0 $(arg frame_prefix)base_link_torso $(arg frame_prefix)laser" />
-        <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_imu"   args="0 0 0 0 0 0 $(arg frame_prefix)base_link_torso $(arg frame_prefix)imu_link" />
+        <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_laser" args="0 0 0 0 0 0 $(arg frame_prefix)base_link $(arg frame_prefix)laser" />
+        <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_imu"   args="0 0 0 0 0 0 $(arg frame_prefix)base_link $(arg frame_prefix)imu_link" />
         <!-- include your hardware launch file here -->
     </group>
 </launch>

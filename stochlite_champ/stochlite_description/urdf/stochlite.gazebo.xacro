@@ -18,7 +18,7 @@
             <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">
             <alwaysOn>true</alwaysOn>
             <updateRate>10.0</updateRate>
-            <bodyName>base_link_torso</bodyName>
+            <bodyName>base_link</bodyName>
             <topicName>odom/ground_truth</topicName>
             <gaussianNoise>0.01</gaussianNoise>
             <frameName>world</frameName>

@@ -10,9 +10,9 @@
         
         <joint name="dummy_joint" type="fixed">
             <parent link="dummy"/>
-            <child link="base_link_torso"/>
+            <child link="base_link"/>
         </joint> -->
-  <link name="base_link_torso">
+  <link name="base_link">
     <inertial>
       <origin rpy="0 0 0" xyz="0.00011698 0.00043344 -0.0081282"/>
       <mass value="1.582"/>
@@ -21,7 +21,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://stochlite_description/meshes/base_link_torso.STL"/>
+        <mesh filename="package://stochlite_description/meshes/base_link.STL"/>
       </geometry>
       <material name="">
         <color rgba="0.75294 0.75294 0.75294 1"/>
@@ -30,7 +30,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://stochlite_description/meshes/base_link_torso.STL"/>
+        <mesh filename="package://stochlite_description/meshes/base_link.STL"/>
       </geometry>
     </collision>
   </link>
@@ -42,7 +42,7 @@
     </inertial>
   </link>
   <joint name="imu_joint" type="fixed">
-    <parent link="base_link_torso"/>
+    <parent link="base_link"/>
     <child link="imu_link"/>
   </joint>
   <link name="fl_abd_link">
@@ -69,7 +69,7 @@
   </link>
   <joint name="fl_abd_joint" type="revolute">
     <origin rpy="0 0 0" xyz="0.16695 0.0956 -0.0050001"/>
-    <parent link="base_link_torso"/>
+    <parent link="base_link"/>
     <child link="fl_abd_link"/>
     <axis xyz="1 0 0"/>
     <limit effort="4.1" lower="-1.572" upper="1.572" velocity="4.6"/>
@@ -135,7 +135,7 @@
   <link name="fl_toe_link">
         </link>
   <joint name="fl_toe_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0.023481 -0.146"/>
+    <origin rpy="0 0 0" xyz="0 0.023481 -0.169"/>
     <axis xyz="0 1 0"/>
     <parent link="fl_shank_link"/>
     <child link="fl_toe_link"/>
@@ -164,7 +164,7 @@
   </link>
   <joint name="fr_abd_joint" type="revolute">
     <origin rpy="0 0 0" xyz="0.16695 -0.0964 -0.0049999"/>
-    <parent link="base_link_torso"/>
+    <parent link="base_link"/>
     <child link="fr_abd_link"/>
     <axis xyz="1 0 0"/>
     <limit effort="4.1" lower="-1.572" upper="1.572" velocity="4.6"/>
@@ -230,7 +230,7 @@
   <link name="fr_toe_link">
         </link>
   <joint name="fr_toe_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 -0.023481 -0.146"/>
+    <origin rpy="0 0 0" xyz="0 -0.023481 -0.169"/>
     <axis xyz="0 1 0"/>
     <parent link="fr_shank_link"/>
     <child link="fr_toe_link"/>
@@ -259,7 +259,7 @@
   </link>
   <joint name="bl_abd_joint" type="revolute">
     <origin rpy="0 0 0" xyz="-0.16695 0.0956 -0.0049999"/>
-    <parent link="base_link_torso"/>
+    <parent link="base_link"/>
     <child link="bl_abd_link"/>
     <axis xyz="1 0 0"/>
     <limit effort="4.1" lower="-1.572" upper="1.572" velocity="4.6"/>
@@ -325,7 +325,7 @@
   <link name="bl_toe_link">
         </link>
   <joint name="bl_toe_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0.023481 -0.146"/>
+    <origin rpy="0 0 0" xyz="0 0.023481 -0.169"/>
     <axis xyz="0 1 0"/>
     <parent link="bl_shank_link"/>
     <child link="bl_toe_link"/>
@@ -354,7 +354,7 @@
   </link>
   <joint name="br_abd_joint" type="revolute">
     <origin rpy="0 0 0" xyz="-0.16695 -0.0964 -0.0050001"/>
-    <parent link="base_link_torso"/>
+    <parent link="base_link"/>
     <child link="br_abd_link"/>
     <axis xyz="1 0 0"/>
     <limit effort="4.1" lower="-1.572" upper="1.572" velocity="4.6"/>
@@ -420,7 +420,7 @@
   <link name="br_toe_link">
         </link>
   <joint name="br_toe_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 -0.023481 -0.146"/>
+    <origin rpy="0 0 0" xyz="0 -0.023481 -0.169"/>
     <axis xyz="0 1 0"/>
     <parent link="br_shank_link"/>
     <child link="br_toe_link"/>
@@ -546,7 +546,7 @@
     <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">
       <alwaysOn>true</alwaysOn>
       <updateRate>10.0</updateRate>
-      <bodyName>base_link_torso</bodyName>
+      <bodyName>base_link</bodyName>
       <topicName>odom/ground_truth</topicName>
       <gaussianNoise>0.01</gaussianNoise>
       <frameName>world</frameName>
@@ -570,68 +570,120 @@
   <!-- Add material and friction -->
   <gazebo reference="base_link_torso">
     <material>Gazebo/White</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="fl_abd_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="fl_thigh_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="fl_shank_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="fr_abd_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="fr_thigh_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="fr_shank_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="bl_abd_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="bl_thigh_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="bl_shank_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="br_abd_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="br_thigh_link">
     <material>Gazebo/DarkGrey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
   <gazebo reference="br_shank_link">
     <material>Gazebo/Grey</material>
-    <mu1>1.0</mu1>
-    <mu2>0.5</mu2>
+    <kp>10000000.0</kp>
+    <kd>1.0</kd>
+    <mu1>4</mu1>
+    <mu2>4</mu2>
+    <maxVel>0.0</maxVel>
+    <minDepth>0.001</minDepth>
   </gazebo>
 </robot>
 

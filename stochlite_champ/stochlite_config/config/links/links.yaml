@@ -1,4 +1,4 @@
-base: base_link_torso
+base: base_link
 left_front:
   - fl_abd_link
   - fl_thigh_link

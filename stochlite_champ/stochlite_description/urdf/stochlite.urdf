@@ -572,8 +572,8 @@
     <material>Gazebo/White</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -581,8 +581,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -590,8 +590,8 @@
     <material>Gazebo/DarkGrey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -599,8 +599,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -608,8 +608,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -617,8 +617,8 @@
     <material>Gazebo/DarkGrey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -626,8 +626,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -635,8 +635,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -644,8 +644,8 @@
     <material>Gazebo/DarkGrey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -653,8 +653,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -662,8 +662,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -671,8 +671,8 @@
     <material>Gazebo/DarkGrey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>
@@ -680,8 +680,8 @@
     <material>Gazebo/Grey</material>
     <kp>10000000.0</kp>
     <kd>1.0</kd>
-    <mu1>4</mu1>
-    <mu2>4</mu2>
+    <mu1>4.0</mu1>
+    <mu2>4.0</mu2>
     <maxVel>0.0</maxVel>
     <minDepth>0.001</minDepth>
   </gazebo>

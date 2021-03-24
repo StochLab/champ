@@ -19,22 +19,22 @@
           - br_hip_joint
           - br_knee_joint
       
-    #   constraints:
-    #     goal_time: 0.01
-    #     stopped_velocity_tolerance: 0.01
+      # constraints:
+      #   goal_time: 0.01
+      #   stopped_velocity_tolerance: 0.01
 
-    #   stop_trajectory_duration: 0.01
+      # stop_trajectory_duration: 0.01
 
       gains:
-        fl_abd_joint  : {p: 180, d: 10.9, i: 0.36}
-        fl_hip_joint  : {p: 180, d: 10.9, i: 0.36}
-        fl_knee_joint : {p: 180, d: 10.9, i: 0.36}
-        fr_abd_joint  : {p: 180, d: 10.9, i: 0.36}
-        fr_hip_joint  : {p: 180, d: 10.9, i: 0.36}
-        fr_knee_joint : {p: 180, d: 10.9, i: 0.36}
-        bl_abd_joint  : {p: 180, d: 10.9, i: 0.36}
-        bl_hip_joint  : {p: 180, d: 10.9, i: 0.36}
-        bl_knee_joint : {p: 180, d: 10.9, i: 0.36}
-        br_abd_joint  : {p: 180, d: 10.9, i: 0.36}
-        br_hip_joint  : {p: 180, d: 10.9, i: 0.36}
-        br_knee_joint : {p: 180, d: 10.9, i: 0.36}
+        fl_abd_joint  : {p: 100, d: 6, i: 0.2}
+        fl_hip_joint  : {p: 100, d: 6, i: 0.2}
+        fl_knee_joint : {p: 100, d: 6, i: 0.2}
+        fr_abd_joint  : {p: 100, d: 6, i: 0.2}
+        fr_hip_joint  : {p: 100, d: 6, i: 0.2}
+        fr_knee_joint : {p: 100, d: 6, i: 0.2}
+        bl_abd_joint  : {p: 100, d: 6, i: 0.2}
+        bl_hip_joint  : {p: 100, d: 6, i: 0.2}
+        bl_knee_joint : {p: 100, d: 6, i: 0.2}
+        br_abd_joint  : {p: 100, d: 6, i: 0.2}
+        br_hip_joint  : {p: 100, d: 6, i: 0.2}
+        br_knee_joint : {p: 100, d: 6, i: 0.2}

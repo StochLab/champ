@@ -3,7 +3,7 @@
     <arg name="rviz"               default="false"/> <!-- Set to true to run rviz in parallel. -->
     <arg name="lite"               default="false" />  <!-- Set to true if you're using CHAMP lite version. Only useful for microcontrollers. -->
     <arg name="ros_control_file"   default="$(find stochlite_config)/config/ros_control/ros_control.yaml" /> <!-- Path to ROS Control configurations. Do not touch. -->
-    <arg name="gazebo_world"       default="$(find stochlite_config)/worlds/outdoor.world" /> <!-- Path to Gazebo world you want to load. -->
+    <arg name="gazebo_world"       default="$(find stochlite_config)/worlds/default.world" /> <!-- Path to Gazebo world you want to load. -->
     <arg name="world_init_x"       default="0.0" /> <!-- X Initial position of the robot in Gazebo World -->
     <arg name="world_init_y"       default="0.0" /> <!-- Y Initial position of the robot in Gazebo World -->
     <arg name="world_init_ang"     default="0.0" /> <!-- ang Initial position of the robot in Gazebo World -->

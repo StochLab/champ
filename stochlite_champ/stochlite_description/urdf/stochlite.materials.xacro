@@ -134,6 +134,14 @@
             <minDepth>0.001</minDepth>
         </gazebo>
 
+        <gazebo reference="tof_link">
+            <material>Gazebo/Red</material>
+        </gazebo>
+
+        <gazebo reference="imu_link">
+            <material>Gazebo/Yellow</material>
+        </gazebo>
+
     </xacro:macro>
 
 </robot>

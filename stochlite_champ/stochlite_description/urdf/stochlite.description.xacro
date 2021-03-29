@@ -48,18 +48,6 @@
             </collision>
         </link>
 
-        <link name="imu_link">
-            <inertial>
-            <mass value="0.001"/>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <inertia ixx="1e-09" ixy="0.0" ixz="0.0" iyy="1e-09" iyz="0.0" izz="1e-09"/>
-            </inertial>
-        </link>
-        <joint name="imu_joint" type="fixed">
-            <parent link="base_link"/>
-            <child link="imu_link"/>
-        </joint>
-
         <link name="fl_abd_link">
             <inertial>
                 <origin xyz="0.0029662 0.011479 4.5103E-17" rpy="0 0 0" />

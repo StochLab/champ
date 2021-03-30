@@ -9,7 +9,7 @@
     <arg name="world_init_ang"     default="0.0" /> <!-- ang Initial position of the robot in Gazebo World -->
     <arg name="world_init_heading" default="0.0" /> <!-- Initial heading of the robot in Gazebo World -->
 
-    <param name="use_sim_time" value="true" />
+    <param name="use_sim_time" value="false" />
 
     <include file="$(find stochlite_config)/launch/bringup.launch">
         <arg name="robot_name"             value="$(arg robot_name)"/>

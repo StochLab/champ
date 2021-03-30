@@ -1,9 +1,19 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="stochlite_transmission">
+    <xacro:macro name="stochlite_transmission" params="name">
 
-        <transmission name="fl_abd_trans">
+        <transmission name="${name}_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${name}_joint">
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${name}_motor">
+                <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+        </transmission>
+
+        <!-- <transmission name="fl_abd_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="fl_abd_joint">
                 <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
@@ -121,7 +131,7 @@
             <actuator name="br_knee_joint_motor">
                 <mechanicalReduction>1</mechanicalReduction>
             </actuator>
-        </transmission>
+        </transmission> -->
 
     </xacro:macro>
 

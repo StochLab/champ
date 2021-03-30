@@ -99,9 +99,19 @@ Visualization Manager:
           Value: true
         fr_toe_link:
           Value: true
-        imu_link:
+        imu_link_0:
           Value: true
-        tof_link:
+        tof_link_0:
+          Value: true
+        tof_link_1:
+          Value: true
+        tof_link_2:
+          Value: true
+        tof_link_3:
+          Value: true
+        tof_link_4:
+          Value: true
+        tof_link_5:
           Value: true
       Marker Scale: 0.15000000596046448
       Name: TF
@@ -132,9 +142,19 @@ Visualization Manager:
               fr_shank_link:
                 fr_toe_link:
                   {}
-          imu_link:
+          imu_link_0:
             {}
-          tof_link:
+          tof_link_0:
+            {}
+          tof_link_1:
+            {}
+          tof_link_2:
+            {}
+          tof_link_3:
+            {}
+          tof_link_4:
+            {}
+          tof_link_5:
             {}
       Update Interval: 0
       Value: true
@@ -149,7 +169,7 @@ Visualization Manager:
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
         base_link:
-          Alpha: 0.20000000298023224
+          Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
@@ -229,12 +249,37 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        imu_link:
+        imu_link_0:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        tof_link:
+        tof_link_0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tof_link_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tof_link_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tof_link_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tof_link_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tof_link_5:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -288,10 +333,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2804000973701477
+      Pitch: 0.6603994965553284
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.5803982615470886
+      Yaw: 0.9703983068466187
     Saved: ~
 Window Geometry:
   Displays:

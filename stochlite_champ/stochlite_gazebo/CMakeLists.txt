@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(stochlite_gazebo)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -13,10 +13,9 @@ find_package(catkin REQUIRED
   roscpp
   sensor_msgs
   roslaunch
-  # message_filters
 )
 
-# find_package(Boost REQUIRED)
+
 
 ###################################
 ## catkin specific configuration ##
@@ -34,38 +33,29 @@ catkin_package(
   roscpp
   sensor_msgs
   roslaunch
-  # message_filters
 )
+
 
 include_directories(
   include/
   ${catkin_INCLUDE_DIRS}
-  # ${Boost_INCLUDE_DIRS}
-  /home/hubble-02/orocos_ws/stoch2.5_orocos/include/
+
 )
 
 add_library(stoch_gazebo_slope_esti_lib
-  src/gazebo_slope_estimator.cpp
+  src/stochlite_gazebo/gazebo_slope_estimator.cpp
+  src/stochlite_gazebo/tools/slope_estimator.cpp  
+  src/stochlite_gazebo/tools/matrix_op.cpp
+  src/stochlite_gazebo/tools/vector_op.cpp
+  src/stochlite_gazebo/tools/rotation.cpp
 )
 
-# Path to the stochlib
-find_library(STOCH_OROCOS libstoch_2_5-gnulinux.so PATHS /home/hubble-02/orocos_ws/stoch2.5_orocos/install/lib/orocos/gnulinux/stoch_2_5)
 
-## Declare a C++ executable
-## With catkin_make all packages are built within a single CMake context
-## The recommended prefix ensures that target names across packages don't collide
-add_executable(stoch_gazebo_slope_esti_node src/tof.cpp)
+add_executable(stoch_gazebo_slope_esti_node src/stochlite_gazebo_slope_esti_node.cpp)
+
 
 target_link_libraries(stoch_gazebo_slope_esti_node 
-  ${STOCH_OROCOS} 
   ${catkin_LIBRARIES} 
-  # ${Boost_LIBRARIES} 
   stoch_gazebo_slope_esti_lib
 )
 
-# 
-
-# foreach(dir config launch meshes urdf)
-# 	install(DIRECTORY ${dir}/
-# 		DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
-# endforeach(dir)

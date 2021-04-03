@@ -3780,7 +3780,7 @@
       <rpyOffsets>0 0 0</rpyOffsets>
     </plugin>
   </gazebo>
-  <link name="imu_link_0">
+  <link name="imu_link_1">
     <inertial>
       <mass value="0.001"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -3796,16 +3796,16 @@
       </material>
     </visual>
   </link>
-  <joint name="imu_joint_0" type="fixed">
+  <joint name="imu_joint_1" type="fixed">
     <parent link="base_link"/>
-    <child link="imu_link_0"/>
+    <child link="imu_link_1"/>
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.005"/>
   </joint>
   <gazebo>
-    <plugin filename="libhector_gazebo_ros_imu.so" name="imu_0_controller">
-      <updateRate>100</updateRate>
-      <bodyName>imu_link_0</bodyName>
-      <topicName>imu_0/data</topicName>
+    <plugin filename="libhector_gazebo_ros_imu.so" name="imu_1_controller">
+      <updateRate>20</updateRate>
+      <bodyName>imu_link_1</bodyName>
+      <topicName>imu_1/data</topicName>
       <accelDrift>0.005 0.005 0.005</accelDrift>
       <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
       <rateDrift>0.005 0.005 0.005 </rateDrift>
@@ -3814,66 +3814,6 @@
       <headingGaussianNoise>0.005</headingGaussianNoise>
     </plugin>
     <material>Gazebo/Yellow</material>
-  </gazebo>
-  <!-- VL53L0X ToF sensor-->
-  <link name="tof_link_0">
-    <inertial>
-      <mass value="0.001"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
-    </inertial>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <box size="0.005 0.015 0.005"/>
-      </geometry>
-      <material name="Red">
-        <color rgba="1 0.2 0.2 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="tof_joint_0" type="fixed">
-    <origin rpy="0.0 1.57 0.0" xyz="0.15 0.0 -0.025"/>
-    <!-- <origin xyz="0 0 -0.029" rpy="0 1.57 0"/> -->
-    <parent link="base_link"/>
-    <child link="tof_link_0"/>
-  </joint>
-  <gazebo reference="tof_link_0">
-    <sensor name="tof_sensor_0" type="ray">
-      <visualize>true</visualize>
-      <update_rate>20</update_rate>
-      <always_on>1</always_on>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>10</samples>
-            <resolution>1</resolution>
-            <min_angle>-0.02618</min_angle>
-            <max_angle>0.02618</max_angle>
-          </horizontal>
-          <vertical>
-            <samples>10</samples>
-            <resolution>1</resolution>
-            <min_angle>-0.02618</min_angle>
-            <max_angle>0.02618</max_angle>
-          </vertical>
-        </scan>
-        <range>
-          <min>0.002</min>
-          <max>2</max>
-          <resolution>0.005</resolution>
-        </range>
-      </ray>
-      <plugin filename="libgazebo_ros_range.so" name="tof_plugin_0">
-        <topicName>gazebo/range_tof_0</topicName>
-        <frameName>frame_range_tof_0</frameName>
-        <gaussianNoise>0.006</gaussianNoise>
-        <updateRate>20</updateRate>
-        <radiation>light</radiation>
-        <fov>0.43</fov>
-      </plugin>
-    </sensor>
-    <material>Gazebo/Red</material>
   </gazebo>
   <!-- VL53L0X ToF sensor-->
   <link name="tof_link_1">
@@ -3893,7 +3833,7 @@
     </visual>
   </link>
   <joint name="tof_joint_1" type="fixed">
-    <origin rpy="0.0 1.57 0.0" xyz="0.065 0.047 -0.025"/>
+    <origin rpy="0.0 1.57 0.0" xyz="0.15 0.0 -0.025"/>
     <!-- <origin xyz="0 0 -0.029" rpy="0 1.57 0"/> -->
     <parent link="base_link"/>
     <child link="tof_link_1"/>
@@ -3953,7 +3893,7 @@
     </visual>
   </link>
   <joint name="tof_joint_2" type="fixed">
-    <origin rpy="0.0 1.57 0.0" xyz="0.065 -0.047 -0.025"/>
+    <origin rpy="0.0 1.57 0.0" xyz="0.065 0.047 -0.025"/>
     <!-- <origin xyz="0 0 -0.029" rpy="0 1.57 0"/> -->
     <parent link="base_link"/>
     <child link="tof_link_2"/>
@@ -3996,7 +3936,7 @@
     <material>Gazebo/Red</material>
   </gazebo>
   <!-- VL53L0X ToF sensor-->
-  <link name="tof_link_3">
+  <link name="tof_link_6">
     <inertial>
       <mass value="0.001"/>
       <origin xyz="0 0 0"/>
@@ -4012,14 +3952,14 @@
       </material>
     </visual>
   </link>
-  <joint name="tof_joint_3" type="fixed">
-    <origin rpy="0.0 1.57 0.0" xyz="-0.15 0.0 -0.025"/>
+  <joint name="tof_joint_6" type="fixed">
+    <origin rpy="0.0 1.57 0.0" xyz="0.065 -0.047 -0.025"/>
     <!-- <origin xyz="0 0 -0.029" rpy="0 1.57 0"/> -->
     <parent link="base_link"/>
-    <child link="tof_link_3"/>
+    <child link="tof_link_6"/>
   </joint>
-  <gazebo reference="tof_link_3">
-    <sensor name="tof_sensor_3" type="ray">
+  <gazebo reference="tof_link_6">
+    <sensor name="tof_sensor_6" type="ray">
       <visualize>true</visualize>
       <update_rate>20</update_rate>
       <always_on>1</always_on>
@@ -4044,9 +3984,9 @@
           <resolution>0.005</resolution>
         </range>
       </ray>
-      <plugin filename="libgazebo_ros_range.so" name="tof_plugin_3">
-        <topicName>gazebo/range_tof_3</topicName>
-        <frameName>frame_range_tof_3</frameName>
+      <plugin filename="libgazebo_ros_range.so" name="tof_plugin_6">
+        <topicName>gazebo/range_tof_6</topicName>
+        <frameName>frame_range_tof_6</frameName>
         <gaussianNoise>0.006</gaussianNoise>
         <updateRate>20</updateRate>
         <radiation>light</radiation>
@@ -4073,7 +4013,7 @@
     </visual>
   </link>
   <joint name="tof_joint_4" type="fixed">
-    <origin rpy="0.0 1.57 0.0" xyz="-0.065 0.047 -0.025"/>
+    <origin rpy="0.0 1.57 0.0" xyz="-0.15 0.0 -0.025"/>
     <!-- <origin xyz="0 0 -0.029" rpy="0 1.57 0"/> -->
     <parent link="base_link"/>
     <child link="tof_link_4"/>
@@ -4107,6 +4047,66 @@
       <plugin filename="libgazebo_ros_range.so" name="tof_plugin_4">
         <topicName>gazebo/range_tof_4</topicName>
         <frameName>frame_range_tof_4</frameName>
+        <gaussianNoise>0.006</gaussianNoise>
+        <updateRate>20</updateRate>
+        <radiation>light</radiation>
+        <fov>0.43</fov>
+      </plugin>
+    </sensor>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <!-- VL53L0X ToF sensor-->
+  <link name="tof_link_3">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.015 0.005"/>
+      </geometry>
+      <material name="Red">
+        <color rgba="1 0.2 0.2 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="tof_joint_3" type="fixed">
+    <origin rpy="0.0 1.57 0.0" xyz="-0.065 0.047 -0.025"/>
+    <!-- <origin xyz="0 0 -0.029" rpy="0 1.57 0"/> -->
+    <parent link="base_link"/>
+    <child link="tof_link_3"/>
+  </joint>
+  <gazebo reference="tof_link_3">
+    <sensor name="tof_sensor_3" type="ray">
+      <visualize>true</visualize>
+      <update_rate>20</update_rate>
+      <always_on>1</always_on>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.02618</min_angle>
+            <max_angle>0.02618</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>10</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.02618</min_angle>
+            <max_angle>0.02618</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.002</min>
+          <max>2</max>
+          <resolution>0.005</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_range.so" name="tof_plugin_3">
+        <topicName>gazebo/range_tof_3</topicName>
+        <frameName>frame_range_tof_3</frameName>
         <gaussianNoise>0.006</gaussianNoise>
         <updateRate>20</updateRate>
         <radiation>light</radiation>

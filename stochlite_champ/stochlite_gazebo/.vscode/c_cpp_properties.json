@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/usr/include/**",
+                "/opt/ros/melodic/include/**",
+                "/opt/ros/melodic/include",
+                "${workspaceFolder}/include/stochlite_gazebo",
+                "${workspaceFolder}/include"
+            ],
+            "name": "STOCHLITE_GAZEBO"
+        }
+    ],
+    "version": 4
+}

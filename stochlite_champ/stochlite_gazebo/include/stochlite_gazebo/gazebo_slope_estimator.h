@@ -117,7 +117,7 @@ namespace stochlite {
         void filter(std::vector<double> rpy, double* roll_median, double* pitch_median, double* yaw_median);
 
         // A function that prints variable for debugging purposes
-        void print_info();
+        void print_info(bool median);
 
         // A function for printing vectors in cpp
         void print_vectors(std::vector<double> const &input);

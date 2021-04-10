@@ -16,7 +16,7 @@ namespace stochlite {
         }
     }
  
-    void GazeboSlopeEstimator::print_info(){
+    void GazeboSlopeEstimator::print_info(bool median){
 
         cout << "############" << endl;
         cout << "IMU roll, pitch and yaw in degrees" << endl;
@@ -26,9 +26,21 @@ namespace stochlite {
 
         cout << "------------" << endl;
         cout << "Slope Values in degrees" << endl;
-        cout << "slope roll -> " << roll_median << endl;
-        cout << "slope pitch -> " << pitch_median << endl;
-        cout << "slope yaw -> " << yaw_median << endl;
+
+        if (median)
+        {
+            cout << "slope roll -> " << roll_median << endl;
+            cout << "slope pitch -> " << pitch_median << endl;
+            cout << "slope yaw -> " << yaw_median << endl;
+        }
+        else
+        {
+            cout << "slope roll -> " << plane_angles[0] << endl;
+            cout << "slope pitch -> " << plane_angles[1] << endl;
+            cout << "slope yaw -> " << plane_angles[2] << endl;
+        }
+        
+        
         cout << "############" << endl;
 
     }
@@ -224,6 +236,8 @@ namespace stochlite {
         
         ros::Rate loop_rate(10); // running at low rates to percieve the slope values in terminal
 
+        bool median=false;
+        
         while (ros::ok())
         {
             ros::spinOnce();
@@ -238,9 +252,11 @@ namespace stochlite {
 		    plane_angles[1] *= 180/PI;
 		    plane_angles[2] *= 180/PI;
 
-            filter(plane_angles, &roll_median, &pitch_median, &yaw_median);
+            if (median) {
+               filter(plane_angles, &roll_median, &pitch_median, &yaw_median);
+            }
 
-            print_info();
+            print_info(median);
 
             loop_rate.sleep();
 

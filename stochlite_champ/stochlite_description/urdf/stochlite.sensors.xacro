@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:macro name="imu" params="id x y z roll pitch yaw update_rate">
+    <xacro:macro name="imu" params="id x y z roll pitch yaw update_rate gnoise">
 
         <link name="imu_link_${id}">
             <inertial>
@@ -32,11 +32,11 @@
                 <bodyName>imu_link_${id}</bodyName>
                 <topicName>imu_${id}/data</topicName>
                 <accelDrift>0.005 0.005 0.005</accelDrift>
-                <accelGaussianNoise>0.005 0.005 0.005</accelGaussianNoise>
+                <accelGaussianNoise>${gnoise} ${gnoise} ${gnoise}</accelGaussianNoise>
                 <rateDrift>0.005 0.005 0.005 </rateDrift>
-                <rateGaussianNoise>0.005 0.005 0.005 </rateGaussianNoise>
+                <rateGaussianNoise>${gnoise} ${gnoise} ${gnoise}</rateGaussianNoise>
                 <headingDrift>0.005</headingDrift>
-                <headingGaussianNoise>0.005</headingGaussianNoise>
+                <headingGaussianNoise>${gnoise}</headingGaussianNoise>
             </plugin>
 
             <material>Gazebo/Yellow</material>
@@ -44,7 +44,7 @@
 
     </xacro:macro>
 
-    <xacro:macro name='tof' params="id x y z roll pitch yaw update_rate">
+    <xacro:macro name='tof' params="id x y z roll pitch yaw update_rate gnoise">
 
         <!-- VL53L0X ToF sensor-->
         <link name="tof_link_${id}"> 
@@ -100,7 +100,7 @@
                 <plugin name="tof_plugin_${id}" filename="libgazebo_ros_range.so">
                     <topicName>gazebo/range_tof_${id}</topicName>
                     <frameName>frame_range_tof_${id}</frameName>
-                    <gaussianNoise>0.006</gaussianNoise>
+                    <gaussianNoise>${gnoise}</gaussianNoise>
                     <updateRate>${update_rate}</updateRate>
                     <radiation>light</radiation>
                     <fov>0.43</fov>

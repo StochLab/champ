@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.0.2)
 project(stoch_linear)
 
@@ -60,7 +61,6 @@ include_directories(
 add_executable(traj 
 src/controller/trajectory_node.cpp
 src/trajectories/elliptical/trot_gait_controller.cpp
-src/robot/robot_kinematics.cpp
 src/utils/matrix_op.cpp
 src/utils/rotation.cpp
 src/utils/slope_estimator.cpp

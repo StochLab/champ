@@ -1,5 +1,5 @@
-#include <stoch_linear/controller/trot/trot_gait_controller.cpp>
-//#include <stoch_linear/ik/robot_kinematics.h>
+#include <stoch_linear/controller/trot/trot_gait_controller.h>
+#include <stoch_linear/ik/robot_kinematics.h>
 #include <fstream>
 #include <time.h>
 #include <ros/ros.h>

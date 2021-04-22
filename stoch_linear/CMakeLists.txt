@@ -55,7 +55,16 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/stoch_linear_node.cpp)
 
-add_executable(traj src/controller/trajectory_node.cpp)
+
+#add_executable(traj src/controller/trajectory_node.cpp)
+add_executable(traj 
+src/controller/trajectory_node.cpp
+src/trajectories/elliptical/trot_gait_controller.cpp
+src/utils/matrix_op.cpp
+src/utils/rotation.cpp
+src/utils/slope_estimator.cpp
+src/utils/vector_op.cpp
+)
 # add_executable(utils 
 # src/utils/matrix_op.cpp
 # src/utils/rotation.cpp

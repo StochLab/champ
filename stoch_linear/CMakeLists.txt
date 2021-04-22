@@ -23,10 +23,10 @@ generate_messages(
 )
 
 catkin_package(
- INCLUDE_DIRS include
- LIBRARIES stoch_linear
- CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
- DEPENDS system_lib
+#  INCLUDE_DIRS include
+#  LIBRARIES stoch_linear
+#  CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
+#  DEPENDS system_lib
 )
 
 ###########
@@ -57,11 +57,11 @@ include_directories(
 
 add_executable(traj 
 src/controller/trajectory_node.cpp
-#src/trajectories/elliptical/trot_gait_controller.cpp
-#src/utils/matrix_op.cpp
-#src/utils/rotation.cpp
-#src/utils/slope_estimator.cpp
-#src/utils/vector_op.cpp
+src/trajectories/elliptical/trot_gait_controller.cpp
+src/utils/matrix_op.cpp
+src/utils/rotation.cpp
+src/utils/slope_estimator.cpp
+src/utils/vector_op.cpp
 )
 # add_executable(utils 
 # src/utils/matrix_op.cpp

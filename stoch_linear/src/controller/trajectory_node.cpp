@@ -1,10 +1,11 @@
-#include <stoch_linear/controller/trot/trot_gait_controller.h>
+#include <stoch_linear/controller/trot/trot_gait_controller.cpp>
+#include <stoch_linear/ik/robot_kinematics.h>
 #include <fstream>
 #include <time.h>
 #include <ros/ros.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
-#include "stoch_linear/Action_step.h"
+#include "stoch_linear/ActionStep.h"
 using namespace std;
 
 
@@ -267,7 +268,7 @@ double constrainAngle(double theta0)
       }
 
 
-void get_actions(const stoch_linear::Action_step &msg){
+void get_actions(const stoch_linear::ActionStep &msg){
     for(int i = 0; i < 20; i++){
         action.at(i) = msg.actions.at(i);
     }

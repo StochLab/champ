@@ -23,10 +23,10 @@ generate_messages(
 )
 
 catkin_package(
- INCLUDE_DIRS include
- LIBRARIES stoch_linear
- CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
- DEPENDS system_lib
+# INCLUDE_DIRS include include/${PROJECT_NAME}
+# LIBRARIES stoch_linear
+# CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
+# DEPENDS system_lib
 )
 
 ###########
@@ -55,14 +55,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/stoch_linear_node.cpp)
 
-add_executable(traj 
-src/controller/trajectory_node.cpp
-#src/trajectories/elliptical/trot_gait_controller.cpp
-#src/utils/matrix_op.cpp
-#src/utils/rotation.cpp
-#src/utils/slope_estimator.cpp
-#src/utils/vector_op.cpp
-)
+add_executable(traj src/controller/trajectory_node.cpp)
 # add_executable(utils 
 # src/utils/matrix_op.cpp
 # src/utils/rotation.cpp
@@ -82,9 +75,7 @@ src/controller/trajectory_node.cpp
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(traj
-  ${catkin_LIBRARIES}
-)
+target_link_libraries(traj ${catkin_LIBRARIES}  )
 
 # target_link_libraries(utils
 #   ${catkin_LIBRARIES}
@@ -118,11 +109,11 @@ target_link_libraries(traj
 # )
 
 ## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   FILES_MATCHING PATTERN "*.h"
-#   PATTERN ".svn" EXCLUDE
-# )
+install(DIRECTORY include/${PROJECT_NAME}/
+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h"
+   PATTERN ".svn" EXCLUDE
+ )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES

@@ -1,10 +1,10 @@
-#include <stoch_linear/controller/trot/trot_gait_controller.cpp>
+#include <stoch_linear/controller/trot/trot_gait_controller.h>
 #include <fstream>
 #include <time.h>
 #include <ros/ros.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
-#include <stoch_linear/Action_step.h>
+#include "stoch_linear/Action_step.h"
 using namespace std;
 
 

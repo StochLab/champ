@@ -28,9 +28,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef ACTUATOR_H
 #define ACTUATOR_H
 
-#include <stdio.h>
-#include <stdlib.h>
-
 namespace champ
     {
         class Actuator

@@ -10,17 +10,17 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 
-add_message_files(
-    DIRECTORY msg
-    FILES
-    ActionStep.msg
-)
+#add_message_files(
+#    DIRECTORY msg
+#    FILES
+#    ActionStep.msg
+#)
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES 
-  std_msgs
-)
+#generate_messages(
+#  DEPENDENCIES 
+#  std_msgs
+#)
 
 catkin_package(
 # INCLUDE_DIRS include include/${PROJECT_NAME}

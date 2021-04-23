@@ -27,14 +27,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <quadruped_controller.h>
 
-champ::PhaseGenerator::Time rosTimeToChampTime(const ros::Time& time)
-{
-  return time.toNSec() / 1000ul;
-}
-
 QuadrupedController::QuadrupedController(ros::NodeHandle *nh, ros::NodeHandle *pnh):
     body_controller_(base_),
-    leg_controller_(base_, rosTimeToChampTime(ros::Time::now())),
+    leg_controller_(base_),
     kinematics_(base_)
 {
     std::string joint_control_topic = "joint_group_position_controller/command";
@@ -96,9 +91,17 @@ void QuadrupedController::controlLoop_(const ros::TimerEvent& event)
     bool foot_contacts[4];
 
     body_controller_.poseCommand(target_foot_positions, req_pose_);
-    leg_controller_.velocityCommand(target_foot_positions, req_vel_, rosTimeToChampTime(ros::Time::now()));
+    leg_controller_.velocityCommand(target_foot_positions, req_vel_);
     kinematics_.inverse(target_joint_positions, target_foot_positions);
     
+    for(size_t i = 0; i < 4; i++)
+    {
+        if(base_.legs[i]->gait_phase())
+            foot_contacts[i] = 1;
+        else
+            foot_contacts[i] = 0;
+    }
+
     publishFootContacts_(foot_contacts);
     publishJoints_(target_joint_positions);
 }
@@ -179,10 +182,7 @@ void QuadrupedController::publishFootContacts_(bool foot_contacts[4])
 
         for(size_t i = 0; i < 4; i++)
         {
-            //This is only published when there's no feedback on the robot
-            //that a leg is in contact with the ground
-            //For such cases, we use the stance phase in the gait for foot contacts
-            contacts_msg.contacts[i] = base_.legs[i]->gait_phase();
+            contacts_msg.contacts[i] = foot_contacts[i];
         }
 
         foot_contacts_publisher_.publish(contacts_msg);

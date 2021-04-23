@@ -58,8 +58,7 @@
 
         <!-- ==================== STATE ESTIMATION ==================== -->
         <node pkg="champ_base" name="state_estimator" type="state_estimation_node" output="screen">
-            <param if="$(arg hardware_connected)" name="orientation_from_imu" value="true"/>
-            <param if="$(arg gazebo)" name="orientation_from_imu" value="true"/>            
+            <param name="close_loop_odom" value="$(arg close_loop_odom)" />
         </node>
 
         <node pkg="robot_localization" type="ekf_localization_node" name="base_to_footprint_ekf"> 
@@ -74,7 +73,7 @@
         </node>
         
         <node if="$(arg rviz)" name="rviz" pkg="rviz" type="rviz"
-            args="-d $(find champ_description)/rviz/urdf_viewer.rviz"
+            args="-d $(find champ_description)/rviz/urdf_viewer.rviz -f $(arg rviz_ref_frame)"
             output="screen"/>
     </group>
 </launch>

@@ -50,7 +50,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <message_filters/subscriber.h>
 #include <message_filters/synchronizer.h>
 #include <message_filters/sync_policies/approximate_time.h>
-#include <sensor_msgs/Imu.h>
 
 class StateEstimation
 {
@@ -60,8 +59,7 @@ class StateEstimation
 
     message_filters::Subscriber<sensor_msgs::JointState> joint_states_subscriber_;
     message_filters::Subscriber<champ_msgs::ContactsStamped> foot_contacts_subscriber_;
-    ros::Subscriber imu_subscriber_;
-
+    
     ros::Publisher footprint_to_odom_publisher_;
     ros::Publisher base_to_footprint_publisher_;
     ros::Publisher foot_publisher_;
@@ -80,7 +78,6 @@ class StateEstimation
     float heading_;
     ros::Time last_vel_time_;
     ros::Time last_sync_time_;
-    sensor_msgs::ImuConstPtr last_imu_;
 
     champ::GaitConfig gait_config_;
 
@@ -93,12 +90,11 @@ class StateEstimation
     std::string odom_frame_;
     std::string base_footprint_frame_;
     std::string base_link_frame_;
-    bool orientation_from_imu_;
+    bool close_loop_odom_;
 
     void publishFootprintToOdom_(const ros::TimerEvent& event);
     void publishBaseToFootprint_(const ros::TimerEvent& event);
     void synchronized_callback_(const sensor_msgs::JointStateConstPtr&, const champ_msgs::ContactsStampedConstPtr&);
-    void imu_callback_(const sensor_msgs::ImuConstPtr&);
 
     visualization_msgs::Marker createMarker_(geometry::Transformation foot_pos, int id, std::string frame_id);
 

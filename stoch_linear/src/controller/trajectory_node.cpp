@@ -4,7 +4,7 @@
 #include <ros/ros.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
-#include "stoch_linear/ActionStep.h"
+
 using namespace std;
 
 
@@ -65,26 +65,13 @@ void updateTraj(ros::Time t_init){
 
 
 
-
-void get_actions(const stoch_linear::ActionStep &msg){
-    for(int i = 0; i < 20; i++){
-        trot.action.at(i) = msg.actions.at(i);
-    }
-    trot.new_act = true;
-}
-
-
-
-
 int main(int argc, char **argv){
 
     ros::init(argc, argv,"Elliptical_trajectory_node");
     ros::NodeHandle n;
     ros::Time t_init = ros::Time::now();
     initTraj();
-    ros::Publisher jointControl_pub = n.advertise<trajectory_msgs::JointTrajectory>("/joint_elliptical_trajectory", 1000);
-    ros::Subscriber sub = n.subscribe("/action_ml",1000, get_actions);
-       
+    ros::Publisher jointControl_pub = n.advertise<trajectory_msgs::JointTrajectory>("/joint_elliptical_trajectory", 1000); 
 
 
     ros::Rate loop_rate(200);

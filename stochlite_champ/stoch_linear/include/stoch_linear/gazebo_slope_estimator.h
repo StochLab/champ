@@ -13,8 +13,8 @@
 #include <sensor_msgs/Imu.h>
 
 
-#include "stochlite_gazebo/tools/vector_op.h"
-#include "stochlite_gazebo/tools/matrix_op.h"
+#include "stoch_linear/utils/vector_op.h"
+#include "stoch_linear/utils/matrix_op.h"
 
 #include <vector>
 #include <queue>

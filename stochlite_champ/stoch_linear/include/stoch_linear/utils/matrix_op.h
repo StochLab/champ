@@ -3,7 +3,7 @@
 #define MATRIX_OP_H
 
 #include <array>
-#include "vector_op.h"
+#include "stoch_linear/utils/vector_op.h"
 
 
 int mat_mul(const double m1[][2], const double m2[][2], double mres[][2]);

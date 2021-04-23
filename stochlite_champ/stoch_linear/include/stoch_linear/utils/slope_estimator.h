@@ -1,8 +1,8 @@
 #ifndef __SLOPE_ESTIMATOR_H__
 #define __SLOPE_ESTIMATOR_H__
 
-#include "vector_op.h"
-#include "matrix_op.h"
+#include "stoch_linear/utils/vector_op.h"
+#include "stoch_linear/utils/matrix_op.h"
 #include <vector>
 
 using namespace std;

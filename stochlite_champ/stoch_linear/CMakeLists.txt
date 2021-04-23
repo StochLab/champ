@@ -36,14 +36,26 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-  include
+  include/
   ${catkin_INCLUDE_DIRS}
+)
+
+add_library(stoch_gazebo_slope_esti_lib
+  src/controller/gazebo_slope_estimator.cpp
+  src/utils/slope_estimator.cpp  
+  src/utils/matrix_op.cpp
+  src/utils/vector_op.cpp
+  src/utils/rotation.cpp
+)
+
+add_library(trot
+  src/trajectories/elliptical/trot_gait_controller.cpp
 )
 
 ## Declare a C++ library
 #add_library(${PROJECT_NAME}
 #  src/${PROJECT_NAME}/stoch_linear.cpp
-#)
+#)  
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -57,21 +69,9 @@ include_directories(
 
 
 #add_executable(traj src/controller/trajectory_node.cpp)
-add_executable(traj 
-src/controller/trajectory_node.cpp
-src/trajectories/elliptical/trot_gait_controller.cpp
-src/robot/robot_kinematics.cpp
-src/utils/matrix_op.cpp
-src/utils/rotation.cpp
-src/utils/slope_estimator.cpp
-src/utils/vector_op.cpp
-)
-# add_executable(utils 
-# src/utils/matrix_op.cpp
-# src/utils/rotation.cpp
-# src/utils/slope_estimator.cpp
-# src/utils/vector_op.cpp
-# )
+add_executable(traj src/controller/trajectory_node.cpp)
+add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slope_esti_node.cpp)
+
 
 
 ## Rename C++ executable without prefix
@@ -85,7 +85,8 @@ src/utils/vector_op.cpp
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(traj ${catkin_LIBRARIES}  )
+target_link_libraries(traj ${catkin_LIBRARIES} trot )
+target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
 
 # target_link_libraries(utils
 #   ${catkin_LIBRARIES}

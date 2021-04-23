@@ -42,20 +42,4 @@ include_directories(
 
 )
 
-add_library(stoch_gazebo_slope_esti_lib
-  src/stochlite_gazebo/gazebo_slope_estimator.cpp
-  src/stochlite_gazebo/tools/slope_estimator.cpp  
-  src/stochlite_gazebo/tools/matrix_op.cpp
-  src/stochlite_gazebo/tools/vector_op.cpp
-  src/stochlite_gazebo/tools/rotation.cpp
-)
-
-
-add_executable(stoch_gazebo_slope_esti_node src/stochlite_gazebo_slope_esti_node.cpp)
-
-
-target_link_libraries(stoch_gazebo_slope_esti_node 
-  ${catkin_LIBRARIES} 
-  stoch_gazebo_slope_esti_lib
-)
 

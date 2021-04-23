@@ -7,7 +7,7 @@
 #include "stoch_linear/utils/vector_op.h"
 #include "stoch_linear/utils/matrix_op.h"
 #include "stoch_linear/utils/rotation.h"
-#include "stoch_linear/io/tof/tof_coordinates.h"
+#include "stoch_linear/utils/tof_coordinates.h"
 #include "stoch_linear/utils/slope_estimator.h"
 #include <vector>
 #include <bits/stdc++.h>

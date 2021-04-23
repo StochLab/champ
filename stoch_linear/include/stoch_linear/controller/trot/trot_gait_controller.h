@@ -105,4 +105,51 @@ namespace controller
 
     };
 
+    class Trot{
+        protected:
+            std::vector<double> id;
+            std::vector<double> Ref;
+            std::vector<double> twist_input;
+            std::vector<double> twist_input_local;
+            std::vector<double> state;
+            std::vector<double> imu_readings;
+            std::vector<double> slope_readings;
+            std::vector<double> imu_readings_to_slope;
+            std::vector<double> motor_command;
+            std::vector<double> slope_reading_local;
+            std::vector<double> imu_readings_local;
+            std::vector<double> past_three_imu_readings;
+
+            double theta;
+            double dt;
+            double freq;
+            double phase[4];
+            double wh;
+            double sh;
+            double leg_length;
+            double step_length_;
+            double count;
+            double omega;
+            double step_length_1;
+            double body_length;
+            double body_width;
+            double button;
+            double button_local;
+            double zero_offset[12];
+
+
+            int no_of_points;
+
+
+            TrotGaitController trot;
+        
+        public:
+
+            std::vector<double> set_pos;
+            std::vector<double> action;
+            bool new_act;
+            
+            std::vector<double> sampleJoints(double theta, std::vector<double> action);
+            void stepRun();
+    };
 }

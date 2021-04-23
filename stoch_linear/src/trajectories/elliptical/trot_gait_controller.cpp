@@ -230,4 +230,42 @@ namespace controller
         
     }
 
+    Trot::Trot()
+    : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.06),leg_length(0.15),step_length_(0.1),dt(0.007)
+    {
+        new_act = false;
+        //initiate_action(); // got to put it in linear_policy core
+    }
+
+    std::vector<double> Trot::sampleJoints(double theta, std::vector<double> action){
+        // Previously doSimulation
+        double final_bot_joint_angles[4][3];
+        std::vector<double> joint_angles;
+
+        trot.runEllipticalTrajStoch2_5(action, theta, 0, final_bot_joint_angles);
+
+        for(int j = 0; j < 4; j++)
+        {
+
+            for( int i =0 ; i<3 ; i++)
+            {
+                joint_angles.push_back(final_bot_joint_angles[j][i]);
+            }
+
+        }
+        return joint_angles;
+    }
+
+    void Trot::stepRun(){
+        if(new_act){
+            new_act = false;
+            set_pos.clear();
+            set_pos = sampleJoints(theta, action);
+            omega = 2 * no_of_points * freq;
+            theta = trot.constrainTheta( (omega * dt) + theta);
+        }
+    }
+
+
+
 }

@@ -62,26 +62,10 @@ namespace controller
 
             }
 
-            bool init_id()
-            {
-                id.push_back(11);
-                id.push_back(12);
-                id.push_back(13);
-                id.push_back(21);
-                id.push_back(22);
-                id.push_back(23);
-                id.push_back(31);
-                id.push_back(32);
-                id.push_back(33);
-                id.push_back(41);
-                id.push_back(42);
-                id.push_back(43);
-
-                return true;
-
-            }
 
             void initiate_action(){
+                // put it in the linear policy
+
                     //step length
                 action.push_back(0.3);
                 action.push_back( 0.3);
@@ -143,9 +127,7 @@ namespace controller
                 : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.06),leg_length(0.15),step_length_(0.1),dt(0.007)
             {
                 new_act = false;
-                init_id();
                 initiate_action();
-                init_kinematics();
             }  
 
             std::vector<double> sampleJoints(double theta, std::vector<double> action){

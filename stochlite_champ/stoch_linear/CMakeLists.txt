@@ -41,7 +41,7 @@ include_directories(
 )
 
 add_library(stoch_gazebo_slope_esti_lib
-  src/controller/gazebo_slope_estimator.cpp
+  src/controller/linear_policy/gazebo_slope_estimator.cpp
   src/utils/slope_estimator.cpp  
   src/utils/matrix_op.cpp
   src/utils/vector_op.cpp
@@ -92,7 +92,7 @@ add_executable(linear_controller src/controller/linear_policy/linear_policy_cont
 ## Specify libraries to link a library or executable target against
 target_link_libraries(traj ${catkin_LIBRARIES} trot )
 target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
-target_link_libraries(linear_controller ${catkin_LIBRARIES} linear)
+target_link_libraries(linear_controller ${catkin_LIBRARIES} linear stoch_gazebo_slope_esti_lib)
 
 # target_link_libraries(utils
 #   ${catkin_LIBRARIES}

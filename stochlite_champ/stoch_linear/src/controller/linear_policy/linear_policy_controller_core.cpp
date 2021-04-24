@@ -4,7 +4,7 @@ using namespace std;
 
 namespace controller 
 {
-    std::vector<double> LinearPolicyController::pastImuValues(std::vector<double> current_imu_readings, std::vector<double> &past_imu_readings)
+    std::vector<double> LinearPolicyController::pastImuValues(std::vector<double> current_imu_readings, std::vector<double> past_imu_readings)
     {
         for(int i=0 ; i < past_imu_readings.size()-current_imu_readings.size() ; i++)
         {

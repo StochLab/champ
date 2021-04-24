@@ -1,7 +1,7 @@
 // written by github@aditya-shirwatkar
 
 #include <iostream>
-#include "stoch_linear/gazebo_slope_estimator.h"
+#include "stoch_linear/controller/linear_policy/gazebo_slope_estimator.h"
 
 using namespace stochlite;
 

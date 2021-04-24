@@ -1,6 +1,6 @@
 // written by github@aditya-shirwatkar
 
-#include "stoch_linear/gazebo_slope_estimator.h"
+#include "stoch_linear/controller/linear_policy/gazebo_slope_estimator.h"
 #include "stoch_linear/utils/slope_estimator.h"
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>

@@ -25,7 +25,7 @@ namespace controller
             /**
              * \brief Function to Store the past 3 imu values
              */
-            std::vector<double> pastImuValues(std::vector<double> current_imu_readings, std::vector<double> &past_imu_readings);
+            std::vector<double> pastImuValues(std::vector<double> current_imu_readings, std::vector<double> past_imu_readings);
 
             /**
              * \brief Function setting the robot state using imu and slope values

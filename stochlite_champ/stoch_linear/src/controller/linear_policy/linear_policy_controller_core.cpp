@@ -4,7 +4,7 @@ using namespace std;
 
 namespace controller 
 {
-    std::vector<double> LinearPolicyController::pastImuValues(std::vector<double> current_imu_readings, std::vector<double> past_imu_readings)
+    std::vector<double> LinearPolicyCore::pastImuValues(std::vector<double> current_imu_readings, std::vector<double> past_imu_readings)
     {
         for(int i=0 ; i < past_imu_readings.size()-current_imu_readings.size() ; i++)
         {
@@ -27,7 +27,7 @@ namespace controller
         return past_imu_readings;
     }
 
-    std::vector<double> LinearPolicyController::settingState(std::vector<double> past_imu_readings, std::vector<double> current_slope_readings)
+    std::vector<double> LinearPolicyCore::settingState(std::vector<double> past_imu_readings, std::vector<double> current_slope_readings)
     {
 
         std::vector<double> local_state;
@@ -48,7 +48,7 @@ namespace controller
         return local_state;
     }
 
-    std::vector<double> LinearPolicyController::linearPolicy(std::vector<double> state, double command_velocity)
+    std::vector<double> LinearPolicyCore::linearPolicy(std::vector<double> state, double command_velocity)
     {
         std::vector<double> action;
         std::vector<double> action_transformed;
@@ -120,7 +120,7 @@ namespace controller
         return action_transformed;        
     }
 
-    std::vector<double> LinearPolicyController::actionTransform(std::vector<double> action, double command_velocity,std::vector<double> slope_values)
+    std::vector<double> LinearPolicyCore::actionTransform(std::vector<double> action, double command_velocity,std::vector<double> slope_values)
     {
         std::vector<double> transformed_action;
         transformed_action.resize(20);

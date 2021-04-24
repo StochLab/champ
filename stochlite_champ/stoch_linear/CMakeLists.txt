@@ -54,6 +54,7 @@ add_library(trot
 
 add_library(linear
   src/controller/linear_policy/linear_policy_controller_core.cpp
+  src/controller/linear_policy/linear_policy_controller_ros.cpp
 )
 
 ## Declare a C++ library

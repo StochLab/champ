@@ -18,7 +18,7 @@ using namespace std;
 
 namespace controller 
 {
-    class LinearPolicyController
+    class LinearPolicyCore
     {
         public:
 

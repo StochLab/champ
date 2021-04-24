@@ -1,10 +1,9 @@
-#include "trajectory_core.cpp"
 #include <fstream>
 #include <time.h>
 #include <ros/ros.h>
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
-
+#include <stoch_linear/controller/trot/trot_gait_controller.h>
 using namespace std;
 
 
@@ -21,6 +20,8 @@ controller::Trot trot;
 
 void initTraj(){
     //traj.header.stamp = ros::Time::now();
+    // description to be changed
+
     traj.joint_names.push_back("fl_abd_joint");
     traj.joint_names.push_back("fl_hip_joint");
     traj.joint_names.push_back("fl_knee_joint");

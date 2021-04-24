@@ -27,19 +27,19 @@ find_package(catkin REQUIRED
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  INCLUDE_DIRS include 
-  LIBRARIES gazebo_slope_estimator
-  CATKIN_DEPENDS 
-  roscpp
-  sensor_msgs
-  roslaunch
+#  INCLUDE_DIRS include 
+#  LIBRARIES gazebo_slope_estimator
+#  CATKIN_DEPENDS 
+#  roscpp
+#  sensor_msgs
+#  roslaunch
 )
 
 
-include_directories(
-  include/
-  ${catkin_INCLUDE_DIRS}
-
-)
+#include_directories(
+#  include/
+#  ${catkin_INCLUDE_DIRS}
+#
+#)
 
 

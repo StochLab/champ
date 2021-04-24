@@ -59,12 +59,12 @@ namespace controller
             /**
              * \brief This is the main function that calls the other functions 
              */
-            void runEllipticalTrajStoch2_5( std::vector < double > action, double theta, int value, double final_bot_joint_angles[4][3]);
+            void runEllipticalTrajStoch2_5( std::vector < double > action, double theta, int value, double foot_positions[4][3]);
             
             /**
              * \brief This is the main function that runs the elliptical trajectory for a single leg 
              */            
-            void runEllipticalTrajLeg( std::vector< double > action, double theta, int value, double *final_leg_joint_angles);
+            void runEllipticalTrajLeg( std::vector< double > action, double theta, int value, double *foot_position);
 
             double wh_, sh_, leg_length_, step_length_, theta_, no_of_points_;   
 
@@ -144,12 +144,12 @@ namespace controller
             TrotGaitController trot;
         
         public:
-
+            Trot();
             std::vector<double> set_pos;
             std::vector<double> action;
             bool new_act;
             
-            std::vector<double> sampleJoints(double theta, std::vector<double> action);
+            std::vector<double> getEndPointers(double theta, std::vector<double> action);
             void stepRun();
     };
 }

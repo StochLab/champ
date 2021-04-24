@@ -1,11 +1,9 @@
 #include <stoch_linear/controller/trot/trot_gait_controller.h>
-#include <stoch_linear/ik/robot_kinematics.h>
 #include <math.h>
 #include <stdio.h>
 #include <string>
 #include <cmath>
 #include <vector>
-#include <stoch_linear/ik/serial3r_kinematics.h>
 
 #define STOCHLITE_ABD_LENGTH 0.096
 
@@ -116,14 +114,14 @@ namespace controller
         initializeElipseShift(xshift, yshift, zshift);
     }
 
-    void TrotGaitController::runEllipticalTrajStoch2_5(std::vector<double> action, double theta, int value, double final_bot_joint_angles[4][3])
+    void TrotGaitController::runEllipticalTrajStoch2_5(std::vector<double> action, double theta, int value, double foot_positions[4][3])
     {
-        robot::Kinematics t;
+        /*robot::Kinematics t;
         Serial3RKinematics serial3r({0.096, 0.146, 0.172});
 
         std::vector<double> foot_position(3);
         std::vector<double> joint_angles(3);
-
+        */
         initializeLegState(theta, action);
 
         for(int i=0;i<4;i++){
@@ -163,29 +161,29 @@ namespace controller
             else
                 leg->y = leg->y + STOCHLITE_ABD_LENGTH + leg->y_shift;
             
-            foot_position[0] = leg->x;
-            foot_position[1] = leg->y;
-            foot_position[2] = leg->z;
-
+            foot_positions[i][0] = leg->x;
+            foot_positions[i][1] = leg->y;
+            foot_positions[i][2] = leg->z;
+            /*
             serial3r.inverseKinematics(leg->name, foot_position, '>', joint_angles);
 
             final_bot_joint_angles[i][0] = joint_angles[0];
             final_bot_joint_angles[i][1] = joint_angles[1];
             final_bot_joint_angles[i][2] = joint_angles[2];
-
+            */
 
         }
     }
 
-    void TrotGaitController::runEllipticalTrajLeg(std::vector<double> action, double theta, int value, double *final_leg_joint_angles)
+    void TrotGaitController::runEllipticalTrajLeg(std::vector<double> action, double theta, int value, double *foot_position)
     {
-        robot::Kinematics t;
+        /*robot::Kinematics t;
 
         Serial3RKinematics serial3r({0.096, 0.146, 0.172});
-
+        
         std::vector<double> foot_position(3);
         std::vector<double> joint_angles(3);
-
+        */
         initializeLegState(theta, action);
 
         if(value == FR)
@@ -221,13 +219,16 @@ namespace controller
         else
             leg->y = leg->y + STOCHLITE_ABD_LENGTH + leg->y_shift;
 
-        
-        serial3r.inverseKinematics(leg->name, foot_position, '>', joint_angles);
+        foot_position[0] = leg->x;
+        foot_position[1] = leg->y;
+        foot_position[2] = leg->z;
+
+        /*serial3r.inverseKinematics(leg->name, foot_position, '>', joint_angles);
 
         final_leg_joint_angles[0] = joint_angles[0];
         final_leg_joint_angles[1] = joint_angles[1];
         final_leg_joint_angles[2] = joint_angles[2];
-        
+        */
     }
 
     Trot::Trot()
@@ -237,30 +238,30 @@ namespace controller
         //initiate_action(); // got to put it in linear_policy core
     }
 
-    std::vector<double> Trot::sampleJoints(double theta, std::vector<double> action){
+    std::vector<double> Trot::getEndPointers(double theta, std::vector<double> action){
         // Previously doSimulation
-        double final_bot_joint_angles[4][3];
-        std::vector<double> joint_angles;
+        double foot_positions[4][3];
+        std::vector<double> end_pos;
 
-        trot.runEllipticalTrajStoch2_5(action, theta, 0, final_bot_joint_angles);
+        trot.runEllipticalTrajStoch2_5(action, theta, 0, foot_positions);
 
         for(int j = 0; j < 4; j++)
         {
 
             for( int i =0 ; i<3 ; i++)
             {
-                joint_angles.push_back(final_bot_joint_angles[j][i]);
+                end_pos.push_back(foot_positions[j][i]);
             }
 
         }
-        return joint_angles;
+        return end_pos;
     }
 
     void Trot::stepRun(){
         if(new_act){
             new_act = false;
             set_pos.clear();
-            set_pos = sampleJoints(theta, action);
+            set_pos = getEndPointers(theta, action);
             omega = 2 * no_of_points * freq;
             theta = trot.constrainTheta( (omega * dt) + theta);
         }

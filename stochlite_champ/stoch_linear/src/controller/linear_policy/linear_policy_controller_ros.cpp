@@ -75,14 +75,6 @@ namespace controller
             start(median);
             loop_rate.sleep();
         }
-
-        // slope_est.allFunctions(0);
-
-        // state  = linear_controller.settingState(past_imu_values,slope_est.plane_angles);
-        // action = linear_controller.linearPolicy(state,5); // The joystick value has been forced to 5m/s but need to create a subscriber to the joystick topic of the framework
-        
-        // // need to publish the action to the trajectory node for now printing    
-        // printVariables();
         
     }
 

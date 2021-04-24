@@ -75,7 +75,7 @@ add_library(linear
 
 #add_executable(traj src/controller/trajectory_node.cpp)
 add_executable(traj src/controller/trajectory_node.cpp)
-add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slope_esti_node.cpp)
+# add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slope_esti_node.cpp)
 add_executable(linear_controller src/controller/linear_policy/linear_policy_controller_node.cpp)
 
 
@@ -92,7 +92,7 @@ add_executable(linear_controller src/controller/linear_policy/linear_policy_cont
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(traj ${catkin_LIBRARIES} trot )
-target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
+# target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
 target_link_libraries(linear_controller ${catkin_LIBRARIES} linear stoch_gazebo_slope_esti_lib)
 
 # target_link_libraries(utils

@@ -21,16 +21,8 @@ using namespace controller;
 
 int main(int argc, char **argv)
 {
-    bool median=false;
     ros::init(argc, argv,"linear_policy_controller_node");
-    // ros::Rate loop_rate(10);
-
     LinearPolicyRos node; 
-    while(1)
-    {
-        node.start(0);
-        // loop_rate.sleep();
-    }
     ros::spin();
     return 0;
 }

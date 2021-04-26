@@ -1,4 +1,5 @@
 #include "stoch_linear/controller/linear_policy/linear_policy_controller_core.h"
+#include <iostream>
 
 using namespace std;
 
@@ -44,6 +45,14 @@ namespace controller
         local_state.at(8)  = past_imu_readings.at(8);
         local_state.at(9)  = current_slope_readings.at(0);
         local_state.at(10) = current_slope_readings.at(1);
+
+#if 0
+        for(int i=0; i<local_state.size() ; i++)
+        {
+          cout<< local_state[i] << endl ;
+        }
+
+#endif
 
         return local_state;
     }

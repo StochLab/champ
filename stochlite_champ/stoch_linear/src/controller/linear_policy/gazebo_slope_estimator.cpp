@@ -241,9 +241,9 @@ namespace stochlite {
         plane_angles = estimator();
         
         // change to degrees
-        plane_angles[0] *= 180/PI;
-        plane_angles[1] *= 180/PI;
-        plane_angles[2] *= 180/PI;
+        // plane_angles[0] *= 180/PI;
+        // plane_angles[1] *= 180/PI;
+        // plane_angles[2] *= 180/PI;
         
         if (median) 
         {

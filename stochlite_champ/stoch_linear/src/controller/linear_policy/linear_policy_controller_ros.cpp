@@ -55,10 +55,10 @@ namespace controller
         slope_est.allFunctions(median);
 
         state  = linear_controller.settingState(past_imu_values,slope_est.plane_angles);
-        action = linear_controller.linearPolicy(state,1); // The joystick value has been forced to 5m/s but need to create a subscriber to the joystick topic of the framework
+        action = linear_controller.linearPolicy(state,0.3); // The joystick value has been forced to 0.3m/s but need to create a subscriber to the joystick topic of the framework
         
         // need to publish the action to the trajectory node for now printing    
-        printVariables(action);        
+        // printVariables(action);        
     }
 
     LinearPolicyRos::LinearPolicyRos()       

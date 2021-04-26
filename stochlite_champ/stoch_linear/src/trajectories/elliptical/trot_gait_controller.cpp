@@ -1,6 +1,7 @@
 #include <stoch_linear/controller/trot/trot_gait_controller.h>
 #include <math.h>
 #include <stdio.h>
+#include<iostream>
 #include <string>
 #include <cmath>
 #include <vector>
@@ -17,13 +18,13 @@ namespace controller
         sh_ = Swing_h;
         leg_length_ = Leg_length;
         no_of_points_ = No_of_points;
-        leg_phase_.f_r_phase = phase[FR];
         leg_phase_.f_l_phase = phase[FL];
-        leg_phase_.b_r_phase = phase[BR];
+        leg_phase_.f_r_phase = phase[FR];
         leg_phase_.b_l_phase = phase[BL];
+        leg_phase_.b_r_phase = phase[BR];
         step_length_ = s1;
 
-        printf(" %f , %f, %f, %f , %f , %f , %f ,%f \n", wh_, sh_, leg_length_, no_of_points_,leg_phase_.f_r_phase,leg_phase_.f_l_phase, leg_phase_.b_r_phase, leg_phase_.b_l_phase);
+        // printf(" %f , %f, %f, %f , %f , %f , %f ,%f \n", wh_, sh_, leg_length_, no_of_points_,leg_phase_.f_r_phase,leg_phase_.f_l_phase, leg_phase_.b_r_phase, leg_phase_.b_l_phase);
         return;
     }
 
@@ -32,10 +33,10 @@ namespace controller
         Swing_h = sh_;
         Leg_length = leg_length_;
         No_of_points = no_of_points_;
-        phase[FR] = leg_phase_.f_r_phase;
         phase[FL] = leg_phase_.f_l_phase;
-        phase[BR] = leg_phase_.b_r_phase;
+        phase[FR] = leg_phase_.f_r_phase;
         phase[BL] = leg_phase_.b_l_phase;
+        phase[BR] = leg_phase_.b_r_phase;
     }
 
     double TrotGaitController::constrainTheta(double theta)
@@ -49,42 +50,42 @@ namespace controller
     }
     void TrotGaitController::updateLegTheta( double theta)
     {
-        stoch2_5_.front_left.theta = constrainTheta(theta + leg_phase_.f_r_phase);
-        stoch2_5_.front_right.phi = constrainTheta(theta + leg_phase_.f_r_phase);
-        stoch2_5_.back_left.phi = constrainTheta(theta + leg_phase_.f_r_phase);
-        stoch2_5_.back_right.phi = constrainTheta(theta + leg_phase_.f_r_phase);
+        stoch2_5_.front_left.theta = constrainTheta(theta + leg_phase_.f_l_phase);
+        stoch2_5_.front_right.theta  = constrainTheta(theta + leg_phase_.f_r_phase);
+        stoch2_5_.back_left.theta    = constrainTheta(theta + leg_phase_.b_l_phase);
+        stoch2_5_.back_right.theta   = constrainTheta(theta + leg_phase_.b_r_phase);
     }
     void TrotGaitController::updateLegPhiVal( double *leg_phi)
     {
-        stoch2_5_.front_left.phi = leg_phi[FL];
+        stoch2_5_.front_left.phi  = leg_phi[FL];
         stoch2_5_.front_right.phi = leg_phi[FR];
-        stoch2_5_.back_left.phi = leg_phi[BL];
-        stoch2_5_.back_right.phi = leg_phi[BR];
+        stoch2_5_.back_left.phi   = leg_phi[BL];
+        stoch2_5_.back_right.phi  = leg_phi[BR];
     }
 
     void TrotGaitController::updateLegStepLengthVal(double *leg_s1)
     {
-        stoch2_5_.front_left.step_length = leg_s1[FL];
+        stoch2_5_.front_left.step_length  = leg_s1[FL];
         stoch2_5_.front_right.step_length = leg_s1[FR];
-        stoch2_5_.back_left.step_length = leg_s1[BL];
-        stoch2_5_.back_right.step_length = leg_s1[BR];
+        stoch2_5_.back_left.step_length   = leg_s1[BL];
+        stoch2_5_.back_right.step_length  = leg_s1[BR];
     }
     void TrotGaitController::initializeElipseShift(double *xshift, double *yshift, double *zshift)
     {
-        stoch2_5_.front_left.x_shift = xshift[FL];
+        stoch2_5_.front_left.x_shift  = xshift[FL];
         stoch2_5_.front_right.x_shift = xshift[FR];
-        stoch2_5_.back_left.x_shift = xshift[BL];
-        stoch2_5_.back_right.x_shift = xshift[BR];
+        stoch2_5_.back_left.x_shift   = xshift[BL];
+        stoch2_5_.back_right.x_shift  = xshift[BR];
 
-        stoch2_5_.front_left.y_shift = yshift[FL];
+        stoch2_5_.front_left.y_shift  = yshift[FL];
         stoch2_5_.front_right.y_shift = yshift[FR];
-        stoch2_5_.back_left.y_shift = yshift[BL];
-        stoch2_5_.back_right.y_shift = yshift[BR];
+        stoch2_5_.back_left.y_shift   = yshift[BL];
+        stoch2_5_.back_right.y_shift  = yshift[BR];
         
-        stoch2_5_.front_left.z_shift = zshift[FL];
+        stoch2_5_.front_left.z_shift  = zshift[FL];
         stoch2_5_.front_right.z_shift = zshift[FR];
-        stoch2_5_.back_left.z_shift = zshift[BL];
-        stoch2_5_.back_right.z_shift = zshift[BR];
+        stoch2_5_.back_left.z_shift   = zshift[BL];
+        stoch2_5_.back_right.z_shift  = zshift[BR];
     }
 
     void TrotGaitController::initializeLegState(double theta, std::vector<double> action)
@@ -232,7 +233,7 @@ namespace controller
     }
 
     TrotGaitController::TrotGaitController()
-    : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.06),leg_length(0.15),step_length_(0.1),dt(0.007)
+    : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.05),leg_length(0.15),step_length_(0.1),dt(0.007)
     {
         new_act = false;
         //initiate_action(); // got to put it in linear_policy core
@@ -241,45 +242,59 @@ namespace controller
     std::vector<double> TrotGaitController::getEndPointers(double theta, std::vector<double> action){
         // Previously doSimulation
         double foot_positions[4][3];
-        std::vector<double> end_pos;
+        std::vector<double> end_pos(12,0);
 
         runEllipticalTrajStoch2_5(action, theta, 0, foot_positions);
-
+        int count =0;
         for(int j = 0; j < 4; j++)
         {
 
             for( int i =0 ; i<3 ; i++)
             {
-                end_pos.push_back(foot_positions[j][i]);
+                end_pos[count] = foot_positions[j][i];
+                count++;
             }
-
+        
         }
         return end_pos;
     }
 
-    void TrotGaitController::stepRun(std::vector<double>& action, std::vector<double>& set_pos){
-        if(new_act){
-            new_act = false;
-            set_pos.clear();
+    void TrotGaitController::stepRun(std::vector<double>& action, std::vector<double>& set_pos)
+    {
+            // set_pos.clear();
             set_pos = getEndPointers(theta, action);
             omega = 2 * no_of_points * freq;
             theta = constrainTheta( (omega * dt) + theta);
-        }
     }
 
     void TrotGaitController::actionInput(geometry::Transformation (&target_foot_position)[4],std::vector<double> actions){
         new_act = true;
-        double phase[4] = {250,0,0,250};
+        double phase[4] = {no_of_points,0,0,no_of_points};
         setGaitConfig(wh,sh,0.1,no_of_points,phase,step_length_);
         std::vector<double> set_pos;
+        std::vector<double> action(20,0);
+        // sl
+        action[0]=0.2;
+        action[1]=0.2;
+        action[2]=0.2;
+        action[3]=0.2;
+
+        // y-shift
+        action[12]=-0.05;
+        action[13]=0.05;
+        action[14]=-0.05;
+        action[15]=0.05;
+        
         stepRun(actions,set_pos);
         for(int j = 0; j < 4; j++)
         {
             geometry::Transformation temp;
+            // cout << set_pos[3*j] <<set_pos[3*j+1] <<set_pos[3*j+2] <<endl;
             temp.Translate(set_pos.at(3*j),set_pos.at(3*j + 1),set_pos.at(3*j + 2)); 
             target_foot_position[j] = temp;
         }
     }
+
 
 
 }

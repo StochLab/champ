@@ -274,7 +274,7 @@ namespace controller
         for(int j = 0; j < 4; j++)
         {
             geometry::Transformation temp;
-            temp.Translate(set_pos.at(4*j),set_pos.at(4*j + 1),set_pos.at(4*j + 2)); 
+            temp.Translate(set_pos.at(3*j),set_pos.at(3*j + 1),set_pos.at(3*j + 2)); 
             target_foot_position[j] = temp;
         }
     }

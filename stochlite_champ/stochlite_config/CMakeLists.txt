@@ -3,4 +3,6 @@ project(stochlite_config)
 
 find_package(catkin REQUIRED COMPONENTS)
 
-catkin_package()
+catkin_package(
+    CATKIN_DEPENDS stochlite_base
+)

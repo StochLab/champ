@@ -24,7 +24,7 @@ find_package(catkin
 
 catkin_package(
     INCLUDE_DIRS include
-    LIBRARIES stochlite_base
+#    LIBRARIES stochlite_base
     CATKIN_DEPENDS 
     roscpp
     rospy
@@ -73,3 +73,9 @@ install(TARGETS
     LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
     RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+install(DIRECTORY include/${PROJECT_NAME}/
+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h"
+   PATTERN ".svn" EXCLUDE
+ )

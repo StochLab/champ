@@ -1,6 +1,7 @@
 #include "stoch_linear/utils/rotation.h"
 #include "math.h"
 
+using namespace mat;
 
 Matrix3f euler_to_rotation(double roll, double pitch, double yaw){
 

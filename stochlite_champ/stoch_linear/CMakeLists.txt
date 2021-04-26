@@ -135,7 +135,7 @@ install(TARGETS trot stoch_gazebo_slope_esti_lib linear
  )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/controller/trot
+install(DIRECTORY include/${PROJECT_NAME}/
    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
    FILES_MATCHING PATTERN "*.h"
    PATTERN ".svn" EXCLUDE

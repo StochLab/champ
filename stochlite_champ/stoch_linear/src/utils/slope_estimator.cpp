@@ -13,6 +13,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+using namespace mat;
 Matrix3f transpose(Vector3f x,Vector3f y, Vector3f z)
 {
 	Matrix3f r;

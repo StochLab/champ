@@ -6,6 +6,7 @@
 #include <vector>
 
 using namespace std;
+using namespace mat;
 
 Vector3f slope_estimator(std::vector<double> z, std::vector<double> imu_r_p);
 

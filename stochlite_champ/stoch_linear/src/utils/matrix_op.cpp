@@ -1,5 +1,7 @@
 #include "stoch_linear/utils/matrix_op.h"
 
+namespace mat
+{
 // Multiplication of 2x2 matrices
 int mat_mul(const double m1[][2], const double m2[][2], double mres[][2]){
 
@@ -90,4 +92,5 @@ int mat_scalar_mul(const double m1[][2], double scalar, double mres[][2]) {
 	mres[1][1]=scalar*m1[1][1];
 
 	return 0;
+}
 }

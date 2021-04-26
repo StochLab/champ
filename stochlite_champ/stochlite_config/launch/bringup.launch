@@ -36,7 +36,15 @@
         <arg name="publish_joint_control"  value="$(arg publish_joint_control)" />
         <arg name="close_loop_odom"        value="$(arg close_loop_odom)" />
     </include>
-
+    
+    <node unless="$(arg lite)" pkg="stochlite_base" name="champ_controller" type="quadruped_controller_node_m" output="screen">
+            <param                                    name="gazebo"                 value="$(arg gazebo)" />
+            <param if="$(arg hardware_connected)"     name="publish_joint_states"   value="false" />
+            <param unless="$(arg hardware_connected)" name="publish_joint_states"   value="true" />
+            <param                                    name="publish_foot_contacts"  value="$(arg publish_foot_contacts)" />
+            <param                                    name="publish_joint_control"  value="$(arg publish_joint_control)" />
+            <param                                    name="joint_controller_topic" value="$(arg joint_controller_topic)" />
+    </node>
     <arg if="$(eval arg('robot_name') == '/')"  name="frame_prefix" value="" />
     <arg unless="$(eval arg('robot_name') == '/')" name="frame_prefix" value="$(arg robot_name)/" />
     

@@ -50,7 +50,7 @@ namespace controller
         cout << "############" << endl;
     }
 
-    void LinearPolicyRos::start(bool median)
+    void LinearPolicyRos::linearControl(bool median, std::vector<double>& action)
     {
         slope_est.allFunctions(median);
 
@@ -69,12 +69,12 @@ namespace controller
 
         ros::Rate loop_rate(10);
 
-        while(ros::ok())
-        {
-            ros::spinOnce();
-            start(median);
-            loop_rate.sleep();
-        }
+        // while(ros::ok())
+        // {
+        //     ros::spinOnce();
+        //     linearControl(median,action);
+        //     loop_rate.sleep();
+        // }
         
     }
 

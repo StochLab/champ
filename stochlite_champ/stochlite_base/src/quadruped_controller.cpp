@@ -94,11 +94,12 @@ void QuadrupedController::controlLoop_(const ros::TimerEvent& event)
     float target_joint_positions[12];
     geometry::Transformation target_foot_positions[4];
     bool foot_contacts[4];
-    vector<double> actions(12, 0);
+    std::vector<double> actions(15, 0);
 
     body_controller_.poseCommand(target_foot_positions, req_pose_);
     leg_controller_.velocityCommand(target_foot_positions, req_vel_, rosTimeToChampTime(ros::Time::now()));
     
+    linear_control_.linearControl(0,actions);
     trot_.actionInput(target_foot_positions, actions);
 
     kinematics_.inverse(target_joint_positions, target_foot_positions);

@@ -48,6 +48,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <trajectory_msgs/JointTrajectory.h>
 #include <trajectory_msgs/JointTrajectoryPoint.h>
 #include "controller/trot/trot_gait_controller.h"
+#include "controller/linear_policy/linear_policy_controller_ros.h"
 
 class QuadrupedController
 {
@@ -71,6 +72,7 @@ class QuadrupedController
     champ::Kinematics kinematics_;
 
     controller::TrotGaitController trot_;
+    controller::LinearPolicyRos linear_control_;
     std::vector<std::string> joint_names_;
 
     bool publish_foot_contacts_;

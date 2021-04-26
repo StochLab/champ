@@ -5,7 +5,8 @@
 #include <array>
 #include "stoch_linear/utils/vector_op.h"
 
-
+namespace mat
+{
 int mat_mul(const double m1[][2], const double m2[][2], double mres[][2]);
 int mat_add(const double m1[][2], const double m2[][2], double mres[][2]);
 int mat_inv(const double m1[][2], double mres[][2]); 
@@ -50,6 +51,6 @@ auto operator*(const Matrix<T,S>& m, const Vector<T,S>& v)->Vector<T,S>{
 
 	return res;
 }
-
+}
 
 #endif // MATRIX_OP_H

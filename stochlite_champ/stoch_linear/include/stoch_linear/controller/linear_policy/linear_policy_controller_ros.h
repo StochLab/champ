@@ -11,6 +11,13 @@ namespace controller
         private:
 
             sensor_msgs::Imu imu_data; // imu reading which we will store from ros topics
+            ros::NodeHandle n;
+            ros::Subscriber sub_imu;
+            std::vector<double> past_imu_values;        // variable to store the past imu values 
+            std::vector<double> state;                  // variable to store the state 
+            std::vector<double> action;                 // variable to store the action
+            LinearPolicyCore linear_controller;         // Class that contains the functions required for linear policy control
+            GazeboSlopeEstimator slope_est;             // Class that contains the functions required to find the slope
 
         public:
 
@@ -32,16 +39,8 @@ namespace controller
             /**
             * \brief Function to start the controller 
             */           
-            void start(bool median);
+            void linearControl(bool median,std::vector<double>& action);
 
-
-            ros::NodeHandle n;
-            ros::Subscriber sub_imu;
-            std::vector<double> past_imu_values;        // variable to store the past imu values 
-            std::vector<double> state;                  // variable to store the state 
-            std::vector<double> action;                 // variable to store the action
-            LinearPolicyCore linear_controller;         // Class that contains the functions required for linear policy control
-            GazeboSlopeEstimator slope_est;             // Class that contains the functions required to find the slope
 
 
     };

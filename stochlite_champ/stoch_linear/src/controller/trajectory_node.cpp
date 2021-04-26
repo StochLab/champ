@@ -13,7 +13,6 @@ using namespace std;
 
 trajectory_msgs::JointTrajectory traj;
 
-controller::Trot trot;
 
 
 
@@ -70,6 +69,8 @@ int main(int argc, char **argv){
 
     ros::init(argc, argv,"Elliptical_trajectory_node");
     ros::NodeHandle n;
+
+    controller::TrotGaitController trot;
     ros::Time t_init = ros::Time::now();
     initTraj();
     ros::Publisher jointControl_pub = n.advertise<trajectory_msgs::JointTrajectory>("/joint_elliptical_trajectory", 1000); 

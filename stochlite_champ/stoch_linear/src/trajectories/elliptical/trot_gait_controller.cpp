@@ -231,19 +231,19 @@ namespace controller
         */
     }
 
-    Trot::Trot()
+    TrotGaitController::TrotGaitController()
     : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.06),leg_length(0.15),step_length_(0.1),dt(0.007)
     {
         new_act = false;
         //initiate_action(); // got to put it in linear_policy core
     }
 
-    std::vector<double> Trot::getEndPointers(double theta, std::vector<double> action){
+    std::vector<double> TrotGaitController::getEndPointers(double theta, std::vector<double> action){
         // Previously doSimulation
         double foot_positions[4][3];
         std::vector<double> end_pos;
 
-        trot.runEllipticalTrajStoch2_5(action, theta, 0, foot_positions);
+        runEllipticalTrajStoch2_5(action, theta, 0, foot_positions);
 
         for(int j = 0; j < 4; j++)
         {
@@ -257,16 +257,27 @@ namespace controller
         return end_pos;
     }
 
-    void Trot::stepRun(){
+    void TrotGaitController::stepRun(){
         if(new_act){
             new_act = false;
             set_pos.clear();
             set_pos = getEndPointers(theta, action);
             omega = 2 * no_of_points * freq;
-            theta = trot.constrainTheta( (omega * dt) + theta);
+            theta = constrainTheta( (omega * dt) + theta);
         }
     }
 
+    void TrotGaitController::actionInput(geometry::Transformation (&target_foot_position)[4],std::vector<double> actions){
+        new_act = true;
+        action = actions;
+        stepRun();
+        for(int j = 0; j < 4; j++)
+        {
+            geometry::Transformation temp;
+            temp.Translate(set_pos.at(4*j),set_pos.at(4*j + 1),set_pos.at(4*j + 2)); 
+            target_foot_position[j] = temp;
+        }
+    }
 
 
 }

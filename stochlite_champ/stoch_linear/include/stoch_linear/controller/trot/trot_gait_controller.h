@@ -3,6 +3,7 @@
 #include <math.h>
 #include <string>
 #include <vector>
+#include <geometry/geometry.h>
 
 #define FL 0
 #define FR 1
@@ -15,7 +16,67 @@ namespace controller
 {
     class TrotGaitController
     {   
+        protected:
+            std::vector<double> id;
+            std::vector<double> Ref;
+            std::vector<double> twist_input;
+            std::vector<double> twist_input_local;
+            std::vector<double> state;
+            std::vector<double> imu_readings;
+            std::vector<double> slope_readings;
+            std::vector<double> imu_readings_to_slope;
+            std::vector<double> motor_command;
+            std::vector<double> slope_reading_local;
+            std::vector<double> imu_readings_local;
+            std::vector<double> past_three_imu_readings;
+
+            double theta;
+            double dt;
+            double freq;
+            double phase[4];
+            double wh;
+            double sh;
+            double leg_length;
+            double step_length_;
+            double count;
+            double omega;
+            double step_length_1;
+            double body_length;
+            double body_width;
+            double button;
+            double button_local;
+            double zero_offset[12];
+
+
+            int no_of_points;
+            
+
+
         public:
+
+            TrotGaitController();
+
+            std::vector<std::string> joint_names_;
+            std::vector<double> set_pos;
+
+            std::vector<double> action;
+
+            bool new_act;
+            
+            /**
+             * \brief Returns coordinates foot endpoints
+             */
+            std::vector<double> getEndPointers(double theta, std::vector<double> action);
+
+            /**
+             * \brief Runs through the whole pipeline
+             */
+            void stepRun();
+
+            /**
+             * \brief wrapper to take actions directly
+             */
+            void actionInput(geometry::Transformation (&target_foot_position)[4],std::vector<double> action);
              /**
              * \brief Setting the Gait Configuration
              */
@@ -66,7 +127,7 @@ namespace controller
              */            
             void runEllipticalTrajLeg( std::vector< double > action, double theta, int value, double *foot_position);
 
-            double wh_, sh_, leg_length_, step_length_, theta_, no_of_points_;   
+            double wh_, sh_, leg_length_, theta_, no_of_points_;   
 
             struct leg_data
             {
@@ -103,53 +164,5 @@ namespace controller
                 float b_l_phase;
             }leg_phase_;
 
-    };
-
-    class Trot{
-        protected:
-            std::vector<double> id;
-            std::vector<double> Ref;
-            std::vector<double> twist_input;
-            std::vector<double> twist_input_local;
-            std::vector<double> state;
-            std::vector<double> imu_readings;
-            std::vector<double> slope_readings;
-            std::vector<double> imu_readings_to_slope;
-            std::vector<double> motor_command;
-            std::vector<double> slope_reading_local;
-            std::vector<double> imu_readings_local;
-            std::vector<double> past_three_imu_readings;
-
-            double theta;
-            double dt;
-            double freq;
-            double phase[4];
-            double wh;
-            double sh;
-            double leg_length;
-            double step_length_;
-            double count;
-            double omega;
-            double step_length_1;
-            double body_length;
-            double body_width;
-            double button;
-            double button_local;
-            double zero_offset[12];
-
-
-            int no_of_points;
-
-
-            TrotGaitController trot;
-        
-        public:
-            Trot();
-            std::vector<double> set_pos;
-            std::vector<double> action;
-            bool new_act;
-            
-            std::vector<double> getEndPointers(double theta, std::vector<double> action);
-            void stepRun();
     };
 }

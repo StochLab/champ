@@ -7,6 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   trajectory_msgs
   message_generation
+  champ
 )
 
 
@@ -23,9 +24,9 @@ find_package(catkin REQUIRED COMPONENTS
 #)
 
 catkin_package(
-# INCLUDE_DIRS include include/${PROJECT_NAME}
-# LIBRARIES stoch_linear
-# CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
+ INCLUDE_DIRS include include/${PROJECT_NAME}
+ LIBRARIES trot stoch_gazebo_slope_esti_lib
+ CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
 # DEPENDS system_lib
 )
 
@@ -69,7 +70,7 @@ add_library(trot
 
 
 #add_executable(traj src/controller/trajectory_node.cpp)
-add_executable(traj src/controller/trajectory_node.cpp)
+#add_executable(traj src/controller/trajectory_node.cpp)
 add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slope_esti_node.cpp)
 
 
@@ -85,7 +86,7 @@ add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slop
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(traj ${catkin_LIBRARIES} trot )
+target_link_libraries(trot ${catkin_LIBRARIES})
 target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
 
 # target_link_libraries(utils
@@ -113,14 +114,14 @@ target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gaz
 
 ## Mark libraries for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
-# install(TARGETS ${PROJECT_NAME}
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-# )
+install(TARGETS trot stoch_gazebo_slope_esti_node
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+ )
 
 ## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
+install(DIRECTORY include/${PROJECT_NAME}/controller/trot
    DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
    FILES_MATCHING PATTERN "*.h"
    PATTERN ".svn" EXCLUDE

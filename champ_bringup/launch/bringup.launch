@@ -16,6 +16,7 @@
     <arg name="publish_joint_control"  default="true" />
     <arg name="publish_foot_contacts"  default="true" />
     <arg name="close_loop_odom"        default="false" />
+    <arg name="default_control"        default="true" />
 
     <group ns="$(arg robot_name)">
         <param name="tf_prefix" value="$(arg robot_name)"/>
@@ -46,16 +47,16 @@
 
         <!-- ==================== CONTROLLER ==================== -->
         <include file="$(find champ_bringup)/launch/include/velocity_smoother.launch" />
-
-        <!--<node unless="$(arg lite)" pkg="champ_base" name="champ_controller" type="quadruped_controller_node" output="screen">
-            <param                                    name="gazebo"                 value="$(arg gazebo)" />
-            <param if="$(arg hardware_connected)"     name="publish_joint_states"   value="false" />
-            <param unless="$(arg hardware_connected)" name="publish_joint_states"   value="true" />
-            <param                                    name="publish_foot_contacts"  value="$(arg publish_foot_contacts)" />
-            <param                                    name="publish_joint_control"  value="$(arg publish_joint_control)" />
-            <param                                    name="joint_controller_topic" value="$(arg joint_controller_topic)" />
-        </node>
-        -->
+        <group if="$(arg default_control)">
+            <node unless="$(arg lite)" pkg="champ_base" name="champ_controller" type="quadruped_controller_node" output="screen">
+                <param                                    name="gazebo"                 value="$(arg gazebo)" />
+                <param if="$(arg hardware_connected)"     name="publish_joint_states"   value="false" />
+                <param unless="$(arg hardware_connected)" name="publish_joint_states"   value="true" />
+                <param                                    name="publish_foot_contacts"  value="$(arg publish_foot_contacts)" />
+                <param                                    name="publish_joint_control"  value="$(arg publish_joint_control)" />
+                <param                                    name="joint_controller_topic" value="$(arg joint_controller_topic)" />
+            </node>
+        </group>
         <!-- ==================== STATE ESTIMATION ==================== -->
         <node pkg="champ_base" name="state_estimator" type="state_estimation_node" output="screen">
             <param if="$(arg hardware_connected)" name="orientation_from_imu" value="true"/>

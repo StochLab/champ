@@ -25,7 +25,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 catkin_package(
  INCLUDE_DIRS include include/${PROJECT_NAME}
- LIBRARIES trot stoch_gazebo_slope_esti_lib
+ LIBRARIES trot linear stoch_gazebo_slope_esti_lib
  CATKIN_DEPENDS roscpp rospy std_msgs trajectory_msgs message_generation
 # DEPENDS system_lib
 )
@@ -42,7 +42,7 @@ include_directories(
 )
 
 add_library(stoch_gazebo_slope_esti_lib
-  src/controller/gazebo_slope_estimator.cpp
+  src/controller/linear_policy/gazebo_slope_estimator.cpp
   src/utils/slope_estimator.cpp  
   src/utils/matrix_op.cpp
   src/utils/vector_op.cpp
@@ -51,6 +51,11 @@ add_library(stoch_gazebo_slope_esti_lib
 
 add_library(trot
   src/trajectories/elliptical/trot_gait_controller.cpp
+)
+
+add_library(linear
+  src/controller/linear_policy/linear_policy_controller_core.cpp
+  src/controller/linear_policy/linear_policy_controller_ros.cpp
 )
 
 ## Declare a C++ library
@@ -71,7 +76,8 @@ add_library(trot
 
 #add_executable(traj src/controller/trajectory_node.cpp)
 #add_executable(traj src/controller/trajectory_node.cpp)
-add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slope_esti_node.cpp)
+#add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slope_esti_node.cpp)
+add_executable(linear_controller src/controller/linear_policy/linear_policy_controller_node.cpp)
 
 
 
@@ -86,8 +92,16 @@ add_executable(stoch_gazebo_slope_esti_node src/controller/stochlite_gazebo_slop
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
+
 target_link_libraries(trot ${catkin_LIBRARIES})
-target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
+target_link_libraries(linear ${catkin_LIBRARIES})
+target_link_libraries(stoch_gazebo_slope_esti_lib ${catkin_LIBRARIES})
+
+
+#target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
+# target_link_libraries(traj ${catkin_LIBRARIES} trot )
+# target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gazebo_slope_esti_lib)
+target_link_libraries(linear_controller ${catkin_LIBRARIES} linear stoch_gazebo_slope_esti_lib)
 
 # target_link_libraries(utils
 #   ${catkin_LIBRARIES}
@@ -114,7 +128,7 @@ target_link_libraries(stoch_gazebo_slope_esti_node ${catkin_LIBRARIES} stoch_gaz
 
 ## Mark libraries for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
-install(TARGETS trot stoch_gazebo_slope_esti_node
+install(TARGETS trot stoch_gazebo_slope_esti_lib linear
    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}

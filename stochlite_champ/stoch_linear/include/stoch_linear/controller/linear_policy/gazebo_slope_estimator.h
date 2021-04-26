@@ -56,13 +56,6 @@ namespace stochlite {
         sensor_msgs::Range tof_data_4; // tof 4 reading which we will store from ros topics
         sensor_msgs::Range tof_data_5; // tof 5 reading which we will store from ros topics
         sensor_msgs::Range tof_data_6; // tof 6 reading which we will store from ros topics
-        
-
-        std::vector<double> tof_height; // take height value from tof_data and use it as an input to stochOrocos libs (slope_estimator function)
-        std::vector<double> plane_angles; // output of stochOrocos libs
-        std::vector<double> slope_local; // extra variable for ease of functioning while calling slope_estimator
-        std::vector<double> imu_slope_esti; // imu data for argument of slope_estimator function
-        std::vector<double> imu_rpy; // variable for getting RPY values from quaternion of imu raw data
 
         ros::NodeHandle nh; // standard ros node handle
         ros::Publisher pub_slope; // publisher variable for publishing the final slope values (To do!)
@@ -121,6 +114,16 @@ namespace stochlite {
 
         // A function for printing vectors in cpp
         void print_vectors(std::vector<double> const &input);
+
+        // Change by Chandravaran Kunjeti
+        // A function that combines all the functions to give the updated values 
+        void allFunctions(bool median);
+
+        std::vector<double> tof_height;     // take height value from tof_data and use it as an input to stochOrocos libs (slope_estimator function)
+        std::vector<double> plane_angles;   // output of stochOrocos libs
+        std::vector<double> slope_local;    // extra variable for ease of functioning while calling slope_estimator
+        std::vector<double> imu_slope_esti; // imu data for argument of slope_estimator function
+        std::vector<double> imu_rpy;        // variable for getting RPY values from quaternion of imu raw data
     };
     
     double PI = 3.14707;

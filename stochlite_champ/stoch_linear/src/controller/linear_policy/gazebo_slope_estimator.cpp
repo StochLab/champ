@@ -1,6 +1,6 @@
 // written by github@aditya-shirwatkar
 
-#include "stoch_linear/gazebo_slope_estimator.h"
+#include "stoch_linear/controller/linear_policy/gazebo_slope_estimator.h"
 #include "stoch_linear/utils/slope_estimator.h"
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
@@ -230,6 +230,35 @@ namespace stochlite {
 
     }
 
+    // Change by Chandravaran Kunjeti
+    // This function was added to get the final output of the slope estimator and it can be accessed outside
+    void GazeboSlopeEstimator::allFunctions(bool median)
+    {
+        // ros::spinOnce();
+        imu_slope_esti[0] = imu_rpy[0];
+        imu_slope_esti[1] = imu_rpy[1];
+
+        plane_angles = estimator();
+        
+        // change to degrees
+        plane_angles[0] *= 180/PI;
+        plane_angles[1] *= 180/PI;
+        plane_angles[2] *= 180/PI;
+        
+        if (median) 
+        {
+           filter(plane_angles, &roll_median, &pitch_median, &yaw_median);
+        }
+        
+        // print_info(median);
+        
+        // /* 
+        //     for clearing screen, helps in visualization of output
+        //     Reference: https://stackoverflow.com/a/32008479
+        // */
+        // cout << "\033[2J\033[1;1H";      
+    }
+
     GazeboSlopeEstimator::GazeboSlopeEstimator()
     {    
         configure_variables();
@@ -238,33 +267,11 @@ namespace stochlite {
 
         bool median=false;
         
-        while (ros::ok())
-        {
-            ros::spinOnce();
-            
-            imu_slope_esti[0] = imu_rpy[0];
-            imu_slope_esti[1] = imu_rpy[1];
+        // while (ros::ok())
+        // {
+        //     allFunctions(median);
 
-            plane_angles = estimator();
-
-            // change to degrees
-		    plane_angles[0] *= 180/PI;
-		    plane_angles[1] *= 180/PI;
-		    plane_angles[2] *= 180/PI;
-
-            if (median) {
-               filter(plane_angles, &roll_median, &pitch_median, &yaw_median);
-            }
-
-            print_info(median);
-
-            loop_rate.sleep();
-
-            /* 
-                for clearing screen, helps in visualization of output
-                Reference: https://stackoverflow.com/a/32008479
-            */
-            cout << "\033[2J\033[1;1H";
-        }
+        //     loop_rate.sleep();
+        // }
     }
 }

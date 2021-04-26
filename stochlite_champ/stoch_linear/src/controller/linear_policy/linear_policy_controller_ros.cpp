@@ -38,7 +38,7 @@ namespace controller
 #endif
     }
 
-    void LinearPolicyRos::printVariables()
+    void LinearPolicyRos::printVariables(std::vector<double>& action)
     {
         slope_est.print_info(0);
 
@@ -55,10 +55,10 @@ namespace controller
         slope_est.allFunctions(median);
 
         state  = linear_controller.settingState(past_imu_values,slope_est.plane_angles);
-        action = linear_controller.linearPolicy(state,5); // The joystick value has been forced to 5m/s but need to create a subscriber to the joystick topic of the framework
+        action = linear_controller.linearPolicy(state,1); // The joystick value has been forced to 5m/s but need to create a subscriber to the joystick topic of the framework
         
         // need to publish the action to the trajectory node for now printing    
-        printVariables();        
+        printVariables(action);        
     }
 
     LinearPolicyRos::LinearPolicyRos()       

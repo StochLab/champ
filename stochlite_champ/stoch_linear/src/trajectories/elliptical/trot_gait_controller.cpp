@@ -257,7 +257,7 @@ namespace controller
         return end_pos;
     }
 
-    void TrotGaitController::stepRun(){
+    void TrotGaitController::stepRun(std::vector<double>& action, std::vector<double>& set_pos){
         if(new_act){
             new_act = false;
             set_pos.clear();
@@ -269,8 +269,10 @@ namespace controller
 
     void TrotGaitController::actionInput(geometry::Transformation (&target_foot_position)[4],std::vector<double> actions){
         new_act = true;
-        action = actions;
-        stepRun();
+        double phase[4] = {250,0,0,250};
+        setGaitConfig(wh,sh,0.1,no_of_points,phase,step_length_);
+        std::vector<double> set_pos;
+        stepRun(actions,set_pos);
         for(int j = 0; j < 4; j++)
         {
             geometry::Transformation temp;

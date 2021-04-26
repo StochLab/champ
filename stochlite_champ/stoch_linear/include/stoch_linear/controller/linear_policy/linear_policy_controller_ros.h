@@ -34,7 +34,7 @@ namespace controller
             /**
             * \brief Function to print all variables 
             */
-            void printVariables(void);
+            void printVariables(std::vector<double>& action);
 
             /**
             * \brief Function to start the controller 

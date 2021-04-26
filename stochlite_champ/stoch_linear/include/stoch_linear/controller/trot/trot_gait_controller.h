@@ -71,7 +71,7 @@ namespace controller
             /**
              * \brief Runs through the whole pipeline
              */
-            void stepRun();
+            void stepRun(std::vector<double>& action, std::vector<double>& set_pos);
 
             /**
              * \brief wrapper to take actions directly

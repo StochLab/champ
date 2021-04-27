@@ -4,7 +4,7 @@
     <arg name="ros_control_file"   default="$(find champ_gazebo)/config/ros_control.yaml" />
     <arg name="world_init_x"       default="0.0" />
     <arg name="world_init_y"       default="0.0" />
-    <arg name="world_init_z"       default="0.6" />
+    <arg name="world_init_z"       default="1.2" />
     <arg name="world_init_heading" default="0.0" />
 
     <group ns="$(arg robot_name)">

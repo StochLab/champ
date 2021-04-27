@@ -11,13 +11,13 @@
     <xacro:macro name="stochlite_description">
 
         <!-- For KDL -->
-        <!-- <link name="dummy">
+        <link name="world">
         </link>
         
-        <joint name="dummy_joint" type="fixed">
-            <parent link="dummy"/>
+        <joint name="fixed" type="fixed">
+            <parent link="world"/>
             <child link="base_link"/>
-        </joint> -->
+        </joint>
 
         <link name="base_link">
             <inertial>

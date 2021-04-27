@@ -233,7 +233,7 @@ namespace controller
     }
 
     TrotGaitController::TrotGaitController()
-    : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.05),leg_length(0.15),step_length_(0.1),dt(0.007)
+    : theta(1.0),freq(2*M_PI/2.51), no_of_points(250),wh(-0.25),sh(0.08),leg_length(0.15),step_length_(0.1),dt(0.007)
     {
         new_act = false;
         //initiate_action(); // got to put it in linear_policy core
@@ -274,10 +274,10 @@ namespace controller
         std::vector<double> set_pos;
         std::vector<double> action(20,0);
         // sl
-        action[0]=0.2;
-        action[1]=0.2;
-        action[2]=0.2;
-        action[3]=0.2;
+        actions[0]=0;
+        actions[1]=0;
+        actions[2]=0;
+        actions[3]=0;
 
         // y-shift
         action[12]=-0.05;

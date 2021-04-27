@@ -29,6 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define QUADRUPED_CONTROLLER_H
 
 #include "ros/ros.h"
+#include "ros/console.h"
 
 #include <champ_msgs/Joints.h>
 #include <champ_msgs/Pose.h>

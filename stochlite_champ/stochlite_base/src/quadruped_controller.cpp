@@ -102,8 +102,56 @@ void QuadrupedController::controlLoop_(const ros::TimerEvent& event)
     linear_control_.linearControl(0,actions);
     trot_.actionInput(target_foot_positions, actions);
 
+    ROS_DEBUG_NAMED("foot_positons",
+                   "%s: [%f, %f, %f] \t %s: [%f, %f, %f] \t %s: [%f, %f, %f] \t %s: [%f, %f, %f] \t",
+                   "FL_Foot [x,y,z]",
+                   target_foot_positions[0].X(),
+                   target_foot_positions[0].Y(),
+                   target_foot_positions[0].Z(),
+                   "FR_Foot [x,y,z]",
+                   target_foot_positions[1].X(),
+                   target_foot_positions[1].Y(),
+                   target_foot_positions[1].Z(),
+                   "BL_Foot [x,y,z]",
+                   target_foot_positions[2].X(),
+                   target_foot_positions[2].Y(),
+                   target_foot_positions[2].Z(),
+                   "BR_Foot [x,y,z]",
+                   target_foot_positions[3].X(),
+                   target_foot_positions[3].Y(),
+                   target_foot_positions[3].Z()
+                );
+
     kinematics_.inverse(target_joint_positions, target_foot_positions);
-    
+
+
+    ROS_DEBUG_NAMED("joint_positions",
+                   "%s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t %s: %f \t",
+                   joint_names_[0].c_str(),
+                   target_joint_positions[0],
+                   joint_names_[1].c_str(),
+                   target_joint_positions[1],
+                   joint_names_[2].c_str(),
+                   target_joint_positions[2],
+                   joint_names_[3].c_str(),
+                   target_joint_positions[3],
+                   joint_names_[4].c_str(),
+                   target_joint_positions[4],
+                   joint_names_[5].c_str(),
+                   target_joint_positions[5],
+                   joint_names_[6].c_str(),
+                   target_joint_positions[6],
+                   joint_names_[7].c_str(),
+                   target_joint_positions[7],
+                   joint_names_[8].c_str(),
+                   target_joint_positions[8],
+                   joint_names_[9].c_str(),
+                   target_joint_positions[9],
+                   joint_names_[10].c_str(),
+                   target_joint_positions[10],
+                   joint_names_[11].c_str(),
+                   target_joint_positions[11]
+                    );
     publishFootContacts_(foot_contacts);
     publishJoints_(target_joint_positions);
 }

@@ -1,4 +1,6 @@
 <launch>
+    <env name="ROSCONSOLE_CONFIG_FILE"
+       value="$(find stochlite_config)/custom_rosconsole.conf"/>
     <arg name="robot_name"              default="/"/>  <!-- Change this for namespacing. -->
     <arg name="base_frame"             default="base_link"/> <!-- Link name of floating base. Do not touch this. -->
     <arg name="joints_map_file"        default="$(find stochlite_config)/config/joints/joints.yaml"/> <!--Path to list of joint names. Do not touch this. -->
@@ -16,7 +18,8 @@
     <arg name="laser"                  default="sim"/> <!-- Set to the 2D LIDAR you're using. See https://github.com/chvmp/champ/tree/master/champ_bringup/launch/include/laser .-->
     <arg name="joint_controller_topic" default="joint_group_position_controller/command" /> <!-- Change to remap command topic for actuator controller (ROS control).  -->
     <arg name="hardware_connected"     default="false" /> <!-- Flag useful to launch hardware connected launch files. This auto disables publishing joint_states. -->
-
+    <arg name="default_control"        default="false" /> <!-- Flag to toggle champ controller or external controller-->
+   
     <include file="$(find champ_bringup)/launch/bringup.launch">
         <arg name="robot_name"             value="$(arg robot_name)"/>
         <arg name="base_frame"             value="$(arg base_frame)"/>
@@ -35,7 +38,7 @@
         <arg name="publish_foot_contacts"  value="$(arg publish_foot_contacts)" />
         <arg name="publish_joint_control"  value="$(arg publish_joint_control)" />
         <arg name="close_loop_odom"        value="$(arg close_loop_odom)" />
-        <arg name="default_control"        value="false" />
+        <arg name="default_control"        value="$(arg default_control)" />
     </include>
     
     <node unless="$(arg lite)" pkg="stochlite_base" name="champ_controller" type="quadruped_controller_node_m" output="screen">

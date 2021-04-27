@@ -26,18 +26,18 @@
       # stop_trajectory_duration: 0.01
 
       gains:
-        fl_abd_joint  : {p: 10, d: 0, i: 0}
-        fl_hip_joint  : {p: 10, d: 0, i: 0}
-        fl_knee_joint : {p: 10, d: 0, i: 0}
-        fr_abd_joint  : {p: 10, d: 0, i: 0}
-        fr_hip_joint  : {p: 10, d: 0, i: 0}
-        fr_knee_joint : {p: 10, d: 0, i: 0}
-        bl_abd_joint  : {p: 10, d: 0, i: 0}
-        bl_hip_joint  : {p: 10, d: 0, i: 0}
-        bl_knee_joint : {p: 10, d: 0, i: 0}
-        br_abd_joint  : {p: 10, d: 0, i: 0}
-        br_hip_joint  : {p: 10, d: 0, i: 0}
-        br_knee_joint : {p: 10, d: 0, i: 0}
+        fl_abd_joint  : {p: 1000, d: 0, i: 0}
+        fl_hip_joint  : {p: 1000, d: 0, i: 0}
+        fl_knee_joint : {p: 1000, d: 0, i: 0}
+        fr_abd_joint  : {p: 1000, d: 0, i: 0}
+        fr_hip_joint  : {p: 1000, d: 0, i: 0}
+        fr_knee_joint : {p: 1000, d: 0, i: 0}
+        bl_abd_joint  : {p: 1000, d: 0, i: 0}
+        bl_hip_joint  : {p: 1000, d: 0, i: 0}
+        bl_knee_joint : {p: 1000, d: 0, i: 0}
+        br_abd_joint  : {p: 1000, d: 0, i: 0}
+        br_hip_joint  : {p: 1000, d: 0, i: 0}
+        br_knee_joint : {p: 1000, d: 0, i: 0}
 
     # old values
     # gains:

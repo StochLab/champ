@@ -1,0 +1,39 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/hubble-02/stochlite/devel/include/**",
+        "/home/hubble-02/orocos_ws/orocos-2.9_ws/install/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/hubble-02/orocos_ws/rtt_ros-2.9_ws/devel/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/aliengo_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/anymal_b_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/anymal_c_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/astro_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/bruno_config/include/**",
+        "/home/hubble-02/stochlite/src/champ/champ/include/**",
+        "/home/hubble-02/stochlite/src/champ/champ_base/include/**",
+        "/home/hubble-02/stochlite/src/champ/champ_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/dkitty_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/dream_walker_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/littledog_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/mini_cheetah_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/open_quadruped_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/opendog_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/spot_config/include/**",
+        "/home/hubble-02/stochlite/src/robots/configs/spotmicro_config/include/**",
+        "/home/hubble-02/stochlite/src/champ/stochlite_champ/stochlite_config/include/**",
+        "/home/hubble-02/stochlite/src/yocs_velocity_smoother/include/**",
+        "/home/hubble-02/stochlite/src/champ/stochlite_champ/stoch_linear/include/**",
+        "/usr/include/**",
+        "/home/hubble-02/stochlite/src/champ/stochlite_champ/stochlite_base/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

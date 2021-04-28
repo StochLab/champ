@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1
-        - /Grid1/Status1
         - /RobotModel1
         - /RobotModel1/Links1
         - /RobotModel1/Links1/base_link1/Position1
@@ -189,6 +188,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -259,6 +262,8 @@ Visualization Manager:
           Value: true
         tof_link_6:
           Value: true
+        world:
+          Value: true
       Marker Scale: 0.25
       Name: TF
       Show Arrows: true
@@ -267,41 +272,43 @@ Visualization Manager:
       Tree:
         odom:
           base_footprint:
-            base_link:
-              bl_abd_link:
-                bl_thigh_link:
-                  bl_shank_link:
-                    bl_toe_link:
-                      {}
-              br_abd_link:
-                br_thigh_link:
-                  br_shank_link:
-                    br_toe_link:
-                      {}
-              fl_abd_link:
-                fl_thigh_link:
-                  fl_shank_link:
-                    fl_toe_link:
-                      {}
-              fr_abd_link:
-                fr_thigh_link:
-                  fr_shank_link:
-                    fr_toe_link:
-                      {}
-              imu_link_1:
-                {}
-              tof_link_1:
-                {}
-              tof_link_2:
-                {}
-              tof_link_3:
-                {}
-              tof_link_4:
-                {}
-              tof_link_5:
-                {}
-              tof_link_6:
-                {}
+            {}
+        world:
+          base_link:
+            bl_abd_link:
+              bl_thigh_link:
+                bl_shank_link:
+                  bl_toe_link:
+                    {}
+            br_abd_link:
+              br_thigh_link:
+                br_shank_link:
+                  br_toe_link:
+                    {}
+            fl_abd_link:
+              fl_thigh_link:
+                fl_shank_link:
+                  fl_toe_link:
+                    {}
+            fr_abd_link:
+              fr_thigh_link:
+                fr_shank_link:
+                  fr_toe_link:
+                    {}
+            imu_link_1:
+              {}
+            tof_link_1:
+              {}
+            tof_link_2:
+              {}
+            tof_link_3:
+              {}
+            tof_link_4:
+              {}
+            tof_link_5:
+              {}
+            tof_link_6:
+              {}
       Update Interval: 0
       Value: true
     - Class: rviz/MarkerArray
@@ -331,7 +338,7 @@ Visualization Manager:
   Global Options:
     Background Color: 238; 238; 236
     Default Light: true
-    Fixed Frame: odom
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:

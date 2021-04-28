@@ -45,7 +45,11 @@ namespace controller
             /**
              * \brief We include the trained policy here
              */
-            #include "stoch_linear/controller/trot/policy_26F.h"
+            // #include "stoch_linear/controller/trot/policy_slopes_flatg.h" // Most stable on flat grounds only
+            #include "stoch_linear/controller/trot/policy_slopes_joystick3.h" // Most stable but steers off
+            // #include "stoch_linear/controller/trot/policy_18_26F3.h" // Least jittery
+            // #include "stoch_linear/controller/trot/policy_42_26F3.h" // Not performing well
+            // #include "stoch_linear/controller/trot/policy_60_26F3.h" // Worst of the 3
     };
 }
 #endif // __LINEAR_POLICY_CONTROLLER__

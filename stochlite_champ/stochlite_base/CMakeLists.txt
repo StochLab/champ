@@ -61,6 +61,17 @@ target_link_libraries(quadruped_controller_node_m quadruped_controller_m trot ${
 add_dependencies(quadruped_controller_node_m ${catkin_EXPORTED_TARGETS})
 add_dependencies(quadruped_controller_m ${catkin_EXPORTED_TARGETS})
 
+#################################
+###### For build errors##########
+
+# add_library(message_relay_m src/message_relay.cpp)
+
+# add_executable(message_relay_node_m src/message_relay_node.cpp)
+# target_link_libraries(message_relay_node_m message_relay_m message_relay ${catkin_LIBRARIES})
+# add_dependencies(message_relay_node_m ${catkin_EXPORTED_TARGETS})
+# add_dependencies(message_relay_m ${catkin_EXPORTED_TARGETS})
+#################################
+
 add_executable(message_relay_node_m src/message_relay_node.cpp)
 target_link_libraries(message_relay_node_m message_relay ${catkin_LIBRARIES})
 add_dependencies(message_relay_node_m ${catkin_EXPORTED_TARGETS})

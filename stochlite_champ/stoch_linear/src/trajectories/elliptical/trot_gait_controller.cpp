@@ -274,10 +274,10 @@ namespace controller
         std::vector<double> set_pos;
         std::vector<double> action(20,0);
         // sl
-        actions[0]=0;
-        actions[1]=0;
-        actions[2]=0;
-        actions[3]=0;
+        action[0]=0;
+        action[1]=0;
+        action[2]=0;
+        action[3]=0;
 
         // y-shift
         action[12]=-0.05;
